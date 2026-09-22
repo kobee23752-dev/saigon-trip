@@ -211,6 +211,10 @@
   .wtxr .wdel:hover{color:#c0392b}
   .wempty{padding:18px;text-align:center;color:#a89a8c;font-size:13px}
 
+  .ck{display:flex;align-items:baseline;gap:9px;font-size:13.5px;color:#4a4038;padding:5px 0;cursor:pointer;line-height:1.6}
+  .ck input{transform:scale(1.25);accent-color:var(--accent);flex-shrink:0}
+  .ck:has(input:checked){color:#a89a8c;text-decoration:line-through}
+
   /* pager */
   .pager{display:flex;justify-content:space-between;gap:10px;margin-top:30px}
   .pager button{flex:1;background:var(--card);border:1px solid var(--line);border-radius:12px;
@@ -1066,7 +1070,7 @@
         <div class="info"><h3>🛂 e-Visa ✅ 兩人皆已核發</h3><p>雨函 1086***22 · 韋伶 1086***89 · 效期 <b>9/24–9/27</b> 單次入境 · 欄位已全數核對無誤 · 剩最後一步：<b>兩份 PDF 各印紙本</b>＋存手機（入境查驗用）</p></div>
         <div class="info"><h3>🍕 Pizza 4P's ✅ 已訂</h3><p><b>9/24（四）18:15 · Võ Văn Kiệt 店 · 2 位</b>（備註慶祝生日）· 兩段接駁都 Grab：調香→披薩 7 分、披薩→Miu Miu 8 分</p></div>
         <div class="info"><h3>🚖 台灣機場接送 ✅ 已預約（來回）</h3><p>阿麟機場接送 · 去程 <b>9/24 05:30 到府</b>（NT$1,000）· 回程 <b>9/27 20:10 接機</b>（NT$1,100）· 司機資料出發前一天用 LINE 提供</p></div>
-        <div class="info"><h3>📶 eSIM（已選定）</h3><p>Shopee「<b>環亞電訊 越南 eSIM 吃到飽</b>」· <b>9/21（一）出發前三天下單</b>，24H 自動發貨約 5 分鐘取件 · 記得<b>買 2 份</b>、選符合 9/24–27 的天數方案 · 收到 QR 先在台灣掃描安裝、<b>落地才開行動數據/漫遊</b></p></div>
+        <div class="info"><h3>📶 eSIM ✅ 已購買 × 2</h3><p>環亞電訊 越南 eSIM 吃到飽 · QR <b>出發前先安裝</b>（兩支手機各一張）· <b>落地新山一才開行動數據＋漫遊</b>，出關就有網</p></div>
         <div class="info"><h3>🏨 訂房 ✅ 全部確認完成</h3><p>Silverland Mây 已回信確認：訂單成立 · <b>Double bed 已安排</b> · <b>9/24 提早到可寄放行李</b>（等房期間還可使用飯店設施）· 窗口：Nhi Tran (Reservation Officer) · 確認信截圖存手機備用</p></div>
         <div class="info"><h3>🧴 NOTE 香水調香 ✅ 已預約</h3><p><b>9/24（四）16:00–18:00</b> · 咖啡公寓 2F（阮惠街 42 號）· 2 人共 US$51.84 含稅・<b>現場付款</b> · 有問題找店家 WhatsApp +84 896490038</p></div>
         <div class="info"><h3>🎭 AO Show ✅ 已訂</h3><p><b>9/25（五）18:00</b> · aah 坐席區 × 2 · NT$1,772 · Klook 訂單 FZH894454 · 17:45 到劇院出示 <b>Klook App 憑證 QR</b> 換票（每人一組 QR）· 加贈 <b>Grab 8 折券</b>（SV9UNSH2，9/25 當日搭去已訂景點可用）</p></div>
@@ -1185,13 +1189,41 @@
       </div>
 
       <div class="tkcard" style="--tc:#8d7f70">
-        <h3>📶 eSIM × 2 <span class="tkst wait">9/21（一）下單</span></h3>
-        <p>Shopee「環亞電訊 越南 eSIM 吃到飽」· 買 2 份 · 選涵蓋 9/24–27 的方案</p>
+        <h3>📶 eSIM × 2 <span class="tkst ok">已購買</span></h3>
+        <p>Shopee「環亞電訊 越南 eSIM 吃到飽」× 2 ✅ · 收到 QR 後<b>先在台灣安裝</b>（安裝≠啟用）</p>
         <p>收到 QR 先在台灣安裝、落地才開數據漫遊</p>
         <button class="tkadd">📷 加入截圖</button>
       </div>
 
-      <p class="sec-desc" style="margin-top:6px">💡 點截圖可移除。要更新訂單狀態（例如 Miu Miu 確認了），用 ✏️ 編輯改字或告訴 Claude。</p>
+      <h2 class="sec" style="margin-top:26px"><span class="bar"></span>🧳 行前檢查清單</h2>
+      <p class="sec-desc">打勾會自動記住（存在這台裝置）。出發前一晚全部打完就安心睡。</p>
+      <div class="wform"><div class="wt">📄 證件・票券</div>
+        <label class="ck"><input type="checkbox" class="ckb" data-k="passport"> 護照 × 2（效期已確認 OK）</label>
+        <label class="ck"><input type="checkbox" class="ckb" data-k="evisa"> e-Visa <b>紙本 × 2</b>＋手機存 PDF</label>
+        <label class="ck"><input type="checkbox" class="ckb" data-k="shots"> 各訂位確認截圖（Klook QR、4P's、兩間 Spa、飯店）已加進「我的預訂」或相簿</label>
+      </div>
+      <div class="wform"><div class="wt">💵 金錢</div>
+        <label class="ck"><input type="checkbox" class="ckb" data-k="usd"> 美金 US$800（<b>100 元大鈔為主</b>，匯率最好）</label>
+        <label class="ck"><input type="checkbox" class="ckb" data-k="twd"> 台幣 NT$8,600（備援）</label>
+        <label class="ck"><input type="checkbox" class="ckb" data-k="card"> 信用卡 × 2（已開海外刷卡＋Grab 綁卡完成）</label>
+      </div>
+      <div class="wform"><div class="wt">📱 電子</div>
+        <label class="ck"><input type="checkbox" class="ckb" data-k="esim"> eSIM QR 兩支手機<b>都先安裝</b>（落地才開漫遊）</label>
+        <label class="ck"><input type="checkbox" class="ckb" data-k="power"> 行動電源＋充電線（越南插座跟台灣同款兩腳，<b>不用轉接頭</b>；電壓 220V，現代充電器皆通用）</label>
+        <label class="ck"><input type="checkbox" class="ckb" data-k="offline"> Google 翻譯下載越南文離線包＋地圖離線區域</label>
+      </div>
+      <div class="wform"><div class="wt">🎒 生活</div>
+        <label class="ck"><input type="checkbox" class="ckb" data-k="rain"> 折疊傘 × 2＋輕便雨衣（雨季午後雷陣雨）</label>
+        <label class="ck"><input type="checkbox" class="ckb" data-k="care"> 止痛藥、暖暖包、衛生用品（慣用品牌自備）</label>
+        <label class="ck"><input type="checkbox" class="ckb" data-k="misc"> 防曬、防蚊液、拖鞋、摺疊購物袋（掃貨用）</label>
+      </div>
+      <div class="wform"><div class="wt">🌙 出發前一晚（9/23）</div>
+        <label class="ck"><input type="checkbox" class="ckb" data-k="pack"> 行李打包完成（託運＋隨身）</label>
+        <label class="ck"><input type="checkbox" class="ckb" data-k="driver"> 收到阿麟接送的<b>司機資料</b>（LINE）</label>
+        <label class="ck"><input type="checkbox" class="ckb" data-k="alarm"> 鬧鐘 <b>04:40</b>（05:25 樓下等車、05:30 出發）</label>
+      </div>
+
+      <p class="sec-desc" style="margin-top:6px">💡 點截圖可移除。要更新訂單狀態，用 ✏️ 編輯改字或告訴 Claude。</p>
       <input type="file" id="tkfile" accept="image/*" style="display:none">
     </section>
   </div>
@@ -1636,6 +1668,19 @@
     wSave(); wRender();
   });
   wRender();
+
+  /* ---------- 行前檢查清單：打勾記住 ---------- */
+  var CK_KEY='sgtrip_checklist';
+  var ckState={};
+  try{ ckState=JSON.parse(localStorage.getItem(CK_KEY))||{}; }catch(e){ ckState={}; }
+  document.querySelectorAll('.ckb').forEach(function(cb){
+    var k=cb.getAttribute('data-k');
+    cb.checked=!!ckState[k];
+    cb.addEventListener('change',function(){
+      ckState[k]=cb.checked;
+      try{ localStorage.setItem(CK_KEY, JSON.stringify(ckState)); }catch(e){}
+    });
+  });
 
   /* ---------- currency converter ---------- */
   var twd = document.getElementById('twd');
