@@ -1370,7 +1370,10 @@
           var probe = document.createElement('div');
           probe.innerHTML = payload.html;
           var lowok = localStorage.getItem('sgtrip_lowok')==='1';
-          if(lowok || (probe.querySelectorAll('.page').length >= 9 && probe.querySelectorAll('.day .slot').length >= 25)){
+          /* 快照必須包含目前版本的所有分頁，缺頁＝過時快照，直接作廢 */
+          var needIds=['home','prep','day1','day2','day3','day4','map','booking','tickets','wallet','convert','phrases'];
+          var hasAllPages = needIds.every(function(id){ return probe.querySelector('#'+id); });
+          if(hasAllPages && (lowok || (probe.querySelectorAll('.page').length >= 9 && probe.querySelectorAll('.day .slot').length >= 25))){
             wrapEl.innerHTML = payload.html; hasSaved = true;
           }else{
             localStorage.removeItem('sgtrip_html');
