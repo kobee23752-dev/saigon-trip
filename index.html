@@ -1,0 +1,1518 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>胡志明市 4 天行程 ｜ 9/24–9/27</title>
+<!-- v7 -->
+
+<style>
+  :root{
+    --bg:#fdf6ef; --card:#ffffff; --ink:#2c2420; --muted:#7a6c60;
+    --accent:#d4663f; --accent2:#e8a04b; --green:#3f7d5e; --line:#ece0d4;
+    --shadow:0 6px 24px rgba(120,80,50,.10);
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html,body{overflow-x:hidden;max-width:100%}
+  body{font-family:"PingFang TC","Noto Sans TC","Microsoft JhengHei",system-ui,sans-serif;
+    background:var(--bg);color:var(--ink);line-height:1.7;-webkit-font-smoothing:antialiased;padding-top:54px;
+    overflow-wrap:break-word;word-break:break-word}
+  .wrap{max-width:880px;margin:0 auto;padding:16px 18px 80px}
+  img,a,div,p,span{max-width:100%}
+
+  /* top bar + hamburger */
+  .topbar{position:fixed;top:0;left:0;right:0;height:54px;background:rgba(253,246,239,.95);
+    backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);display:flex;align-items:center;
+    gap:12px;padding:0 16px;z-index:50;border-bottom:1px solid var(--line)}
+  .burger{width:36px;height:36px;border:none;background:transparent;display:flex;flex-direction:column;
+    justify-content:center;gap:5px;cursor:pointer;padding:6px}
+  .burger span{display:block;height:3px;border-radius:2px;background:var(--accent);transition:.25s}
+  .burger.open span:nth-child(1){transform:translateY(8px) rotate(45deg)}
+  .burger.open span:nth-child(2){opacity:0}
+  .burger.open span:nth-child(3){transform:translateY(-8px) rotate(-45deg)}
+  .tb-title{font-weight:800;font-size:16px;flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+  .tb-logo{font-size:14px;font-weight:800;color:var(--accent);flex-shrink:0;white-space:nowrap}
+
+  /* drawer */
+  .drawer{position:fixed;top:0;left:0;bottom:0;width:280px;max-width:82vw;background:var(--card);
+    z-index:60;box-shadow:6px 0 30px rgba(0,0,0,.18);transform:translateX(-100%);transition:transform .28s;
+    padding:20px 0;overflow-y:auto}
+  .drawer.open{transform:translateX(0)}
+  .drawer-head{padding:6px 22px 16px;font-size:19px;font-weight:800;border-bottom:1px solid var(--line);margin-bottom:8px}
+  .drawer-head small{display:block;font-size:12px;color:var(--muted);font-weight:600;margin-top:3px}
+  .drawer a{display:block;padding:13px 22px;font-size:15px;color:var(--ink);text-decoration:none;
+    cursor:pointer;border-left:4px solid transparent}
+  .drawer a:hover{background:#faf3ec}
+  .drawer a.active{background:#fbe9dd;color:var(--accent);font-weight:800;border-left-color:var(--accent)}
+  .overlay{position:fixed;inset:0;background:rgba(40,30,20,.4);z-index:55;opacity:0;visibility:hidden;transition:.25s}
+  .overlay.open{opacity:1;visibility:visible}
+
+  /* pages */
+  .page{display:none}
+  .page.active{display:block;animation:fade .3s ease}
+  @keyframes fade{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+
+  /* Hero (home) */
+  .hero{
+    background:linear-gradient(135deg,#d4663f 0%,#e8a04b 100%);
+    color:#fff;padding:46px 24px 56px;text-align:center;border-radius:24px;
+    box-shadow:var(--shadow);position:relative;overflow:hidden}
+  .hero::after{content:"✈︎";position:absolute;font-size:200px;opacity:.08;
+    right:-30px;top:-40px;transform:rotate(15deg)}
+  .hero .eyebrow{letter-spacing:4px;font-size:13px;opacity:.9;margin-bottom:10px}
+  .hero h1{font-size:30px;font-weight:800;margin-bottom:8px}
+  .hero .sub{font-size:16px;opacity:.95}
+  .hero .who{margin-top:14px;display:inline-block;background:rgba(255,255,255,.2);
+    padding:6px 16px;border-radius:20px;font-size:14px}
+
+  /* quick facts */
+  .facts{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:-30px 0 26px;position:relative;z-index:2}
+  .fact{background:var(--card);border-radius:16px;padding:16px 12px;text-align:center;box-shadow:var(--shadow)}
+  .fact .ic{font-size:22px}
+  .fact .lbl{font-size:12px;color:var(--muted);margin-top:4px}
+  .fact .val{font-size:14px;font-weight:700;margin-top:2px}
+
+  section{margin-top:8px}
+  h2.sec{font-size:22px;font-weight:800;display:flex;align-items:center;gap:10px;margin-bottom:6px}
+  h2.sec .bar{width:6px;height:24px;background:var(--accent);border-radius:3px;display:inline-block}
+  .sec-desc{color:var(--muted);font-size:14px;margin-bottom:16px}
+
+  /* booking / info cards */
+  .grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+  @media(max-width:640px){.grid{grid-template-columns:1fr}.facts{grid-template-columns:1fr 1fr}}
+  .info{background:var(--card);border-radius:16px;padding:18px 18px;box-shadow:var(--shadow);border:1px solid var(--line)}
+  .info h3{font-size:16px;margin-bottom:8px;display:flex;align-items:center;gap:8px}
+  .info p{font-size:14px;color:#4a4038;margin-bottom:6px}
+  .info .tag{display:inline-block;background:#fbe9dd;color:var(--accent);font-size:12px;
+    font-weight:700;padding:2px 9px;border-radius:10px;margin-bottom:8px}
+  .info a{color:var(--accent);font-weight:600;text-decoration:none;border-bottom:1px solid #f0c9b4}
+  .info a:hover{opacity:.8}
+  ul.clean{list-style:none;font-size:14px}
+  ul.clean li{padding-left:18px;position:relative;margin-bottom:5px;color:#4a4038}
+  ul.clean li::before{content:"›";position:absolute;left:0;color:var(--accent);font-weight:800}
+
+  /* day timeline */
+  .day{background:var(--card);border-radius:20px;box-shadow:var(--shadow);
+    border:1px solid var(--line);margin-bottom:22px;overflow:hidden}
+  .day-head{padding:18px 22px;background:linear-gradient(135deg,#fff,#fcefe5);
+    display:flex;align-items:center;gap:14px;border-bottom:1px solid var(--line)}
+  .day-num{background:var(--accent);color:#fff;width:54px;height:54px;border-radius:14px;
+    display:flex;flex-direction:column;align-items:center;justify-content:center;flex-shrink:0;line-height:1.1}
+  .day-num small{font-size:10px;opacity:.9}
+  .day-num b{font-size:20px}
+  .day-title h3{font-size:18px;font-weight:800}
+  .day-title .date{font-size:13px;color:var(--muted)}
+  .day-body{padding:8px 22px 18px}
+  .slot{display:flex;gap:14px;padding:14px 0;border-bottom:1px dashed var(--line)}
+  .slot:last-child{border-bottom:none}
+  .slot .time{flex-shrink:0;width:64px;font-size:13px;font-weight:700;color:var(--accent);padding-top:2px}
+  .slot .ct h4{font-size:15px;margin-bottom:3px}
+  .slot .ct p{font-size:13.5px;color:#5a4f46}
+  .slot .ct .meta{font-size:12.5px;color:#6f6256;margin-top:6px;background:#f7efe7;
+    border:1px solid var(--line);border-radius:9px;padding:5px 10px;display:flex;flex-wrap:wrap;gap:4px 14px}
+  .slot .ct .meta span{white-space:normal;overflow-wrap:break-word}
+  .slot .ct .meta b{color:var(--accent)}
+  .slot .ct .maplinks{display:flex;flex-wrap:wrap;gap:7px;margin-top:8px}
+  .slot .ct .maplink{display:inline-flex;align-items:center;gap:4px;background:#eaf2ed;color:var(--green);
+    border:1px solid #d4e6dc;border-radius:18px;padding:4px 11px;font-size:12.5px;font-weight:700;text-decoration:none}
+  .slot .ct .maplink:hover{background:#dceae3}
+  .pill{display:inline-block;font-size:11px;padding:1px 8px;border-radius:8px;margin-left:6px;vertical-align:middle}
+  .pill.must{background:#ffe1d6;color:var(--accent)}
+  .pill.book{background:#e3f0e9;color:var(--green)}
+  .pill.eat{background:#fdf0d8;color:#b07d20}
+
+  .note{background:#fff4ec;border-left:4px solid var(--accent2);border-radius:8px;
+    padding:12px 16px;font-size:13.5px;color:#5a4f46;margin-top:10px}
+  .note b{color:var(--accent)}
+
+  /* phrase table */
+  table.ph{width:100%;border-collapse:collapse;font-size:14px;background:var(--card);
+    border-radius:14px;overflow:hidden;box-shadow:var(--shadow);table-layout:fixed}
+  table.ph td{padding:10px 12px;border-bottom:1px solid var(--line);overflow-wrap:break-word;word-break:break-word}
+  table.ph tr td:first-child{font-weight:700;width:34%}
+  table.ph tr td:nth-child(2){color:var(--accent);font-weight:600}
+  table.ph tr:last-child td{border-bottom:none}
+
+  /* currency converter */
+  .conv{background:var(--card);border-radius:20px;box-shadow:var(--shadow);border:1px solid var(--line);padding:22px}
+  .conv .row{display:grid;grid-template-columns:1fr auto 1fr;align-items:end;gap:12px}
+  @media(max-width:640px){.conv .row{grid-template-columns:1fr;gap:14px}.conv .swap{transform:rotate(90deg);justify-self:center}}
+  .conv .fld label{display:block;font-size:13px;color:var(--muted);margin-bottom:6px;font-weight:700}
+  .conv .ipt{display:flex;align-items:center;background:#faf3ec;border:2px solid var(--line);
+    border-radius:12px;padding:10px 14px;transition:border .15s}
+  .conv .ipt:focus-within{border-color:var(--accent)}
+  .conv .ipt .cur{font-size:13px;font-weight:800;color:var(--accent);margin-right:8px;white-space:nowrap}
+  .conv .ipt input{border:none;background:transparent;font-size:22px;font-weight:700;width:100%;
+    outline:none;color:var(--ink);text-align:right}
+  .conv .swap{font-size:22px;color:var(--accent);padding-bottom:10px;text-align:center}
+  .conv .rate{margin-top:16px;font-size:13.5px;color:#5a4f46;display:flex;flex-wrap:wrap;align-items:center;gap:8px}
+  .conv .rate input{width:78px;border:1px solid var(--line);border-radius:8px;padding:3px 8px;
+    font-size:14px;text-align:right;font-weight:700;color:var(--accent)}
+  .conv .chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px}
+  .conv .chip{background:#fbe9dd;color:var(--accent);border:none;border-radius:20px;padding:6px 13px;
+    font-size:13px;font-weight:700;cursor:pointer}
+  .conv .chip:hover{background:#f6d8c6}
+  .conv .hint{font-size:12px;color:#a89a8c;margin-top:12px}
+
+  /* clickable overview cards */
+  .info.go{cursor:pointer;transition:transform .12s,box-shadow .12s}
+  .info.go:hover{transform:translateY(-2px);box-shadow:0 10px 28px rgba(120,80,50,.16)}
+  .info.go h3::after{content:" ›";color:var(--accent)}
+
+  /* google map links */
+  .maps{display:flex;flex-wrap:wrap;gap:8px;align-items:center;padding:14px 22px 20px;border-top:1px solid var(--line)}
+  .maps .maps-t{font-size:13px;font-weight:800;color:var(--ink);width:100%;margin-bottom:2px}
+  .maps a{display:inline-flex;align-items:center;gap:4px;background:#eaf2ed;color:var(--green);
+    border:1px solid #d4e6dc;border-radius:20px;padding:6px 12px;font-size:13px;font-weight:700;text-decoration:none}
+  .maps a:hover{background:#dceae3}
+
+  /* tickets page */
+  .tkcard{background:var(--card);border-radius:16px;padding:16px 18px;box-shadow:var(--shadow);
+    border:1px solid var(--line);border-left:5px solid var(--tc,#3f7d5e);margin-bottom:14px}
+  .tkcard h3{font-size:16px;margin-bottom:6px}
+  .tkcard p{font-size:13.5px;color:#4a4038;margin-bottom:4px;line-height:1.7}
+  .tkcode{font-family:ui-monospace,Menlo,monospace;font-size:15px;font-weight:800;background:#faf3ec;
+    border:1px dashed var(--accent2);border-radius:8px;padding:3px 10px;display:inline-block;margin:2px 4px 2px 0}
+  .tkst{display:inline-block;font-size:11.5px;font-weight:800;padding:2px 10px;border-radius:10px;margin-left:8px;vertical-align:2px}
+  .tkst.ok{background:#e3f0e9;color:var(--green)}
+  .tkst.wait{background:#fdf0d8;color:#b07d20}
+  .tkadd{margin-top:8px;background:#eaf2ed;border:1.5px solid #d4e6dc;color:var(--green);
+    border-radius:16px;padding:5px 14px;font-size:13px;font-weight:700;cursor:pointer}
+  .tkadd:hover{background:#dceae3}
+  .tkimg{display:block;max-width:100%;border-radius:12px;border:1px solid var(--line);margin-top:10px;cursor:pointer}
+
+  /* pager */
+  .pager{display:flex;justify-content:space-between;gap:10px;margin-top:30px}
+  .pager button{flex:1;background:var(--card);border:1px solid var(--line);border-radius:12px;
+    padding:12px;font-size:14px;font-weight:700;color:var(--accent);cursor:pointer;box-shadow:var(--shadow)}
+  .pager button:disabled{opacity:.3;cursor:default}
+  .pager button.next{background:var(--accent);color:#fff;border-color:var(--accent)}
+
+  footer{text-align:center;color:var(--muted);font-size:13px;margin-top:30px}
+  .disclaimer{font-size:12px;color:#a89a8c;margin-top:8px}
+
+  /* hero scenery */
+  .scene{display:block;width:100%;height:auto;margin:18px auto -20px;max-width:640px}
+
+  /* 4-day overview columns */
+  .ov4{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+  @media(max-width:760px){.ov4{grid-template-columns:repeat(2,1fr)}}
+  @media(max-width:400px){.ov4{grid-template-columns:1fr}}
+  .ovcol{background:var(--card);border-radius:16px;box-shadow:var(--shadow);border:1px solid var(--line);
+    border-top:5px solid var(--dc,#d4663f);padding:12px 13px 9px;cursor:pointer;transition:transform .12s,box-shadow .12s}
+  .ovcol:hover{transform:translateY(-3px);box-shadow:0 10px 28px rgba(120,80,50,.16)}
+  .ovcol .oh{font-weight:800;font-size:14.5px;color:var(--dc,#d4663f)}
+  .ovcol .od{font-size:11px;color:var(--muted);margin-bottom:7px;padding-bottom:5px;border-bottom:1px solid var(--line)}
+  .ovcol .os{display:flex;gap:7px;font-size:12.5px;padding:4px 0;align-items:baseline;border-bottom:1px dashed var(--line);line-height:1.45}
+  .ovcol .os:last-of-type{border-bottom:none}
+  .ovcol .ot{font-weight:800;color:var(--dc,#d4663f);font-size:11px;flex-shrink:0;min-width:37px}
+  .ovcol .om{margin-top:6px;font-size:11px;color:#a89a8c;text-align:right}
+
+  /* edit mode */
+  .editbtn{border:1px solid var(--line);background:var(--card);border-radius:14px;padding:4px 10px;
+    font-size:12px;font-weight:700;color:var(--accent);cursor:pointer;flex-shrink:0;white-space:nowrap}
+  .editbtn.on{background:var(--accent);color:#fff;border-color:var(--accent)}
+  body.editing .wrap{outline:2px dashed var(--accent2);outline-offset:8px;border-radius:8px}
+  body.editing h3:hover,body.editing h4:hover,body.editing p:hover,body.editing li:hover,
+  body.editing td:hover,body.editing th:hover,body.editing .sec-desc:hover,body.editing .who:hover,
+  body.editing .hero h1:hover,body.editing .hero .sub:hover,body.editing .hero .eyebrow:hover,
+  body.editing .fact .val:hover,body.editing .fact .lbl:hover,body.editing .day-title .date:hover,
+  body.editing .oh:hover,body.editing .od:hover,body.editing .os span:hover,body.editing .note:hover,
+  body.editing .meta span:hover,body.editing .mapnote:hover{outline:1.5px dashed var(--accent);cursor:text;border-radius:4px}
+  [contenteditable="true"]{outline:2px solid var(--accent)!important;background:#fff8f0;border-radius:4px}
+  .has-delx{position:relative}
+  .delx{position:absolute;top:4px;right:4px;width:22px;height:22px;border-radius:50%;
+    background:#fff;border:1.5px solid #e0559a;color:#e0559a;font-size:12px;font-weight:800;
+    cursor:pointer;line-height:1;z-index:5;padding:0}
+  .delx:hover{background:#e0559a;color:#fff}
+
+  /* collapsible slots */
+  .slot .ct h4{cursor:pointer;user-select:none}
+  .slot .ct h4::after{content:"▾";display:inline-block;width:24px;height:24px;line-height:24px;
+    text-align:center;background:#fbe9dd;color:var(--accent);border-radius:50%;
+    font-size:15px;font-weight:800;margin-left:8px;vertical-align:-4px}
+  .slot.collapsed .ct h4::after{content:"▸"}
+  .slot .ct h4:hover::after{background:var(--accent);color:#fff}
+  .slot.collapsed .ct > p,.slot.collapsed .meta{display:none}
+
+  /* district map */
+  .mapwrap{background:var(--card);border-radius:20px;box-shadow:var(--shadow);border:1px solid var(--line);padding:14px 14px 6px}
+  .mapwrap svg{width:100%;height:auto;display:block}
+  .maplegend{display:flex;flex-wrap:wrap;gap:8px;margin:14px 0 18px}
+  .maplegend .lg{display:inline-flex;align-items:center;gap:7px;font-size:13px;font-weight:700;
+    background:var(--card);border:1px solid var(--line);border-radius:18px;padding:6px 13px;cursor:pointer;box-shadow:var(--shadow)}
+  .maplegend .lg:hover{transform:translateY(-1px)}
+  .maplegend .dot{width:13px;height:13px;border-radius:50%;flex-shrink:0}
+  .mapnote{font-size:12px;color:#a89a8c;text-align:center;padding:6px 0 8px}
+</style>
+</head>
+<body>
+
+<!-- ===== top bar ===== -->
+<div class="topbar">
+  <button class="burger" id="burger" aria-label="選單"><span></span><span></span><span></span></button>
+  <div class="tb-title" id="tbTitle">總覽</div>
+  <button class="editbtn" id="dlBtn" style="display:none">⬇ 下載存檔</button>
+  <button class="editbtn" id="cancelBtn" style="display:none">✖ 取消</button>
+  <button class="editbtn" id="resetBtn" style="display:none">↺ 還原</button>
+  <button class="editbtn" id="editBtn">✏️ 編輯</button>
+  <div class="tb-logo">🇻🇳 西貢</div>
+</div>
+
+<!-- ===== drawer menu ===== -->
+<nav class="drawer" id="drawer">
+  <div class="drawer-head">胡志明 4 天<small>2026/9/24–9/27 ｜ 你 &amp; 韋伶</small></div>
+  <a data-page="home">🏠 總覽</a>
+  <a data-page="prep">🧳 出發前必辦</a>
+  <a data-page="day1">① Day 1 · 抵達 + 香水調香</a>
+  <a data-page="day2">② Day 2 · 洗頭 + AO Show + 法式</a>
+  <a data-page="day3">③ Day 3 · 聚會 + 夜市掃貨</a>
+  <a data-page="day4">④ Day 4 · 主日 + 返程</a>
+  <a data-page="map">🗺️ 行政區地圖</a>
+  <a data-page="booking">🎟️ 要先訂的東西</a>
+  <a data-page="tickets">🎫 我的預訂</a>
+  <a data-page="convert">💱 匯率換算器</a>
+  <a data-page="phrases">🗣️ 越南語小抄</a>
+</nav>
+<div class="overlay" id="overlay"></div>
+
+<div class="wrap">
+
+  <!-- ===================== 總覽 home ===================== -->
+  <div class="page active" id="home">
+    <div class="hero">
+      <div class="eyebrow">VIETNAM · HO CHI MINH CITY</div>
+      <h1>胡志明市 4 天慢遊</h1>
+      <div class="sub">2026 / 09 / 24（四）– 09 / 27（日）</div>
+      <div class="who">👭 你 &amp; 韋伶 ｜ 輕鬆悠閒 · 文化體驗</div>
+      <svg class="scene" viewBox="0 0 700 150" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <!-- 太陽與雲 -->
+        <circle cx="612" cy="34" r="17" fill="#fff" opacity=".55"/>
+        <ellipse cx="150" cy="26" rx="34" ry="9" fill="#fff" opacity=".3"/>
+        <ellipse cx="480" cy="18" rx="26" ry="7" fill="#fff" opacity=".25"/>
+        <path d="M520,40 l7,-4 M534,36 l7,-4 M548,42 l7,-4" stroke="#fff" stroke-width="2" opacity=".5" stroke-linecap="round"/>
+        <!-- Landmark 81 -->
+        <g fill="#fff" opacity=".9">
+          <polygon points="96,128 96,52 104,24 112,52 112,128"/>
+          <rect x="88" y="70" width="8" height="58" rx="2"/>
+          <rect x="112" y="62" width="8" height="66" rx="2"/>
+          <rect x="80" y="92" width="8" height="36" rx="2"/>
+          <rect x="120" y="86" width="8" height="42" rx="2"/>
+          <line x1="104" y1="24" x2="104" y2="12" stroke="#fff" stroke-width="2.5"/>
+        </g>
+        <!-- Bitexco 金融塔 -->
+        <g fill="#fff" opacity=".8">
+          <path d="M196,128 L200,48 Q210,38 220,48 L224,128 Z"/>
+          <ellipse cx="194" cy="66" rx="14" ry="5"/>
+          <line x1="210" y1="42" x2="210" y2="30" stroke="#fff" stroke-width="2"/>
+        </g>
+        <!-- 紅教堂（雙塔） -->
+        <g fill="#fff" opacity=".95">
+          <rect x="292" y="86" width="14" height="42" rx="2"/>
+          <polygon points="292,86 299,66 306,86"/>
+          <rect x="322" y="86" width="14" height="42" rx="2"/>
+          <polygon points="322,86 329,66 336,86"/>
+          <rect x="306" y="98" width="16" height="30"/>
+          <polygon points="306,98 314,88 322,98"/>
+          <line x1="299" y1="66" x2="299" y2="58" stroke="#fff" stroke-width="2"/>
+          <line x1="329" y1="66" x2="329" y2="58" stroke="#fff" stroke-width="2"/>
+        </g>
+        <!-- 歌劇院拱門 -->
+        <g fill="#fff" opacity=".75">
+          <rect x="392" y="102" width="52" height="26" rx="3"/>
+          <path d="M400,102 v-10 a18,14 0 0 1 36,0 v10 Z"/>
+          <circle cx="418" cy="96" r="5" fill="#e8a04b"/>
+        </g>
+        <!-- 老街屋一排 -->
+        <g fill="#fff" opacity=".55">
+          <rect x="470" y="98" width="20" height="30" rx="2"/>
+          <rect x="494" y="90" width="22" height="38" rx="2"/>
+          <rect x="520" y="100" width="18" height="28" rx="2"/>
+          <rect x="542" y="94" width="20" height="34" rx="2"/>
+        </g>
+        <!-- 椰子樹 -->
+        <g stroke="#fff" stroke-width="3" fill="none" opacity=".85" stroke-linecap="round">
+          <path d="M46,128 C48,104 44,92 40,84"/>
+          <path d="M40,84 q-14,-8 -24,-2 M40,84 q2,-14 12,-18 M40,84 q14,-6 22,2 M40,84 q-8,-14 -20,-14"/>
+          <path d="M650,128 C648,108 652,98 656,90"/>
+          <path d="M656,90 q-12,-10 -22,-6 M656,90 q0,-14 10,-18 M656,90 q14,-4 20,4"/>
+        </g>
+        <!-- 西貢河與小船 -->
+        <path d="M0,136 Q60,130 120,136 T240,136 T360,136 T480,136 T600,136 T700,136" fill="none" stroke="#fff" stroke-width="3" opacity=".6" stroke-linecap="round"/>
+        <path d="M0,145 Q80,140 160,145 T320,145 T480,145 T640,145 T700,144" fill="none" stroke="#fff" stroke-width="2" opacity=".35" stroke-linecap="round"/>
+        <g fill="#fff" opacity=".8">
+          <path d="M245,132 h26 l-5,7 h-16 Z"/>
+          <line x1="258" y1="132" x2="258" y2="122" stroke="#fff" stroke-width="2"/>
+          <polygon points="258,122 268,129 258,129"/>
+        </g>
+      </svg>
+    </div>
+    <div class="facts">
+      <div class="fact"><div class="ic">🛫</div><div class="lbl">去程 9/24</div><div class="val">EVA BR391<br>TPE 09:20→SGN 11:40</div></div>
+      <div class="fact"><div class="ic">🏨</div><div class="lbl">住宿</div><div class="val">Silverland Mây Hotel<br>Thi Sách St · 第一郡</div></div>
+      <div class="fact"><div class="ic">🛬</div><div class="lbl">回程 9/27</div><div class="val">EVA BR396<br>SGN 15:45→TPE 20:10</div></div>
+    </div>
+    <section>
+      <h2 class="sec"><span class="bar"></span>4 天 3 夜速覽</h2>
+      <p class="sec-desc">點任一天直接進入詳細行程；左上角 <b>☰</b> 也能翻頁。</p>
+      <div class="ov4">
+        <div class="ovcol" data-page="day1" style="--dc:#d4663f">
+          <div class="oh">DAY 1 · 初見西貢</div>
+          <div class="od">9/24（四）· 散步＋調香</div>
+          <div class="os"><span class="ot">09:20</span><span>BR391 起飛 ✈️</span></div>
+          <div class="os"><span class="ot">13:15</span><span>Hà Tâm 換匯＋河粉 💵</span></div>
+          <div class="os"><span class="ot">15:00</span><span>老城地標散步 🚶‍♀️</span></div>
+          <div class="os"><span class="ot">16:00</span><span>香水調香工作坊 🧴 ✅</span></div>
+          <div class="os"><span class="ot">18:10</span><span>Pizza 4P&#39;s 四起司 🍕</span></div>
+          <div class="os"><span class="ot">19:30</span><span>Miu Miu 全身按摩 💆</span></div>
+          <div class="om">看詳細 ›</div>
+        </div>
+        <div class="ovcol" data-page="day2" style="--dc:#e0559a">
+          <div class="oh">DAY 2 · 寵愛自己</div>
+          <div class="od">9/25（五）· 全程市中心</div>
+          <div class="os"><span class="ot">09:00</span><span>Rose Spa 洗頭＋按摩 💆‍♀️</span></div>
+          <div class="os"><span class="ot">10:45</span><span>粉紅教堂打卡 💒</span></div>
+          <div class="os"><span class="ot">14:30</span><span>濱城市場 🥥</span></div>
+          <div class="os"><span class="ot">18:00</span><span>AO Show 🎭</span></div>
+          <div class="os"><span class="ot">19:15</span><span>Secret Garden 晚餐＋夜景 🏮</span></div>
+          <div class="om">看詳細 ›</div>
+        </div>
+        <div class="ovcol" data-page="day3" style="--dc:#3f7d5e">
+          <div class="oh">DAY 3 · 聚會＆掃貨</div>
+          <div class="od">9/26（六）· 白天聚會晚上逛</div>
+          <div class="os"><span class="ot">10:00</span><span>韓國街＋半月湖 🥐</span></div>
+          <div class="os"><span class="ot">12:00</span><span>國高聚會 ⛪（–15:00）</span></div>
+          <div class="os"><span class="ot">15:30</span><span>免費下午茶＋桑拿 🍰</span></div>
+          <div class="os"><span class="ot">17:30</span><span>Saigon Square 掃貨 🛍️</span></div>
+          <div class="os"><span class="ot">19:30</span><span>濱城夜市晚餐 🍜</span></div>
+          <div class="om">看詳細 ›</div>
+        </div>
+        <div class="ovcol" data-page="day4" style="--dc:#2b6cb0">
+          <div class="oh">DAY 4 · 滿載而歸</div>
+          <div class="od">9/27（日）· 主日＋返程</div>
+          <div class="os"><span class="ot">08:00</span><span>退房帶行李 🧳</span></div>
+          <div class="os"><span class="ot">10:00</span><span>主日聚會 ⛪（–12:00）</span></div>
+          <div class="os"><span class="ot">13:15</span><span>機場＋伴手禮 🛍️</span></div>
+          <div class="os"><span class="ot">15:45</span><span>BR396 返台 🛫</span></div>
+          <div class="om">看詳細 ›</div>
+        </div>
+      </div>
+    </section>
+    <div class="note">
+      🌸 <b>貼心提醒</b><br>
+      兩人這幾天可能遇到生理期。<br>
+      <b>會碰水的活動（飯店泳池）放在第一晚</b>，其他都不下水。<br>
+      按摩、越式洗頭、夜市逛街都不用下水。<br>
+      包包可備：止痛藥、暖暖包、衛生用品（當地超商也買得到，慣用品牌建議自備）。<br>
+      ☔ <b>九月是雨季</b>：早上通常晴、<b>午後 2–6 點常有雷陣雨</b>（下 1–2 小時就停）。行程已把午後排在室內（調香/按摩/下午茶）；帶<b>折疊傘＋輕便雨衣</b>，下雨改 Grab 移動就好。
+    </div>
+  </div>
+
+  <!-- ===================== 出發前準備 prep ===================== -->
+  <div class="page" id="prep">
+    <section>
+      <h2 class="sec"><span class="bar"></span>出發前必辦（出國前 2–3 週）</h2>
+      <p class="sec-desc">簽證、換幣、網路三件事先搞定，落地就能直接玩。</p>
+      <div class="grid">
+        <div class="info">
+          <span class="tag">最重要</span>
+          <h3>🛂 越南電子簽證 e-Visa</h3>
+          <p>台灣護照入境越南<b>需要簽證</b>，自己上官網辦最便宜，不用找代辦。</p>
+          <ul class="clean">
+            <li>官網：<a href="https://evisa.gov.vn/" target="_blank">evisa.gov.vn</a>（認明 .gov.vn，別點到假網站）</li>
+            <li>費用：單次入境 <b>US$25</b>（信用卡線上付）</li>
+            <li>審核：約 3–5 個工作天，<b>建議提早 2–3 週</b>申請</li>
+            <li>準備：護照效期 6 個月以上、護照資料頁掃描檔、白底證件照（JPG）</li>
+            <li>核准後印出 e-Visa PDF 隨身帶，入境查驗要看</li>
+          </ul>
+        </div>
+        <div class="info">
+          <span class="tag">省錢</span>
+          <h3>💵 換越南盾（VND）</h3>
+          <p>機場匯率最差，只在機場換剛好的車錢，其餘到市區換。</p>
+          <ul class="clean">
+            <li>帶<b>美金或台幣</b>到市區換，匯率比較好</li>
+            <li>推薦地點：濱城市場（Ben Thanh）旁金店 <b>Hà Tâm</b> 等私人換匯所</li>
+            <li>大鈔面額多 0 要看清楚（1 萬越南盾 ≈ NT$12）</li>
+            <li>市區多數餐廳/商店可刷卡，現金留給小吃攤、Grab、市場</li>
+          </ul>
+        </div>
+        <div class="info">
+          <span class="tag">上網</span>
+          <h3>📶 eSIM / 網卡</h3>
+          <p>越南上網便宜又快，建議出發前先在台灣買好 eSIM，落地掃碼即用。</p>
+          <ul class="clean">
+            <li>已選定：Shopee <b>環亞電訊 越南 eSIM</b>，<b>9/21（一）下單</b>（出發前三天）· 買 2 份 · QR 先安裝、落地才啟用</li>
+            <li>不想用 eSIM：機場出關有 Viettel / MobiFone / VinaPhone 櫃台</li>
+            <li>選 Viettel 訊號最穩，4 天吃到飽很夠用</li>
+          </ul>
+        </div>
+        <div class="info">
+          <span class="tag">必裝 App</span>
+          <h3>📱 出發前下載好</h3>
+          <ul class="clean">
+            <li><b>Grab</b>：叫車＋叫外送，當地交通主力（先註冊收驗證碼）</li>
+            <li><b>Google Maps / Translate</b>：翻譯下載越南文離線包</li>
+            <li><b>XE</b> 匯率換算，避免被多算 0</li>
+            <li>機場到飯店：Grab 約 15–20 萬越南盾（≈NT$180–240），15–20 分鐘</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <!-- ===================== Day 1 ===================== -->
+  <div class="page" id="day1">
+    <div class="day">
+      <div class="day-head">
+        <div class="day-num"><small>DAY</small><b>1</b></div>
+        <div class="day-title"><h3>抵達西貢 · 老城散步 + 香水調香</h3>
+          <div class="date">9/24（四）· 清晨出發 · 中午落地 · 輕鬆開場</div></div>
+      </div>
+      <div class="day-body">
+        <p style="font-size:12px;color:#a89a8c;margin:12px 2px 0">👆 點各時段<b>標題</b>可展開交通、價錢細節；📍 一點直接導航</p>
+        <div class="slot"><div class="time">05:30</div><div class="ct">
+          <h4>專車到府 → 桃園機場 <span class="pill must">✅ 已預約</span></h4>
+          <p><b>✅ 已預約：阿麟台灣機場接送</b> · 9/24（四）<b>05:30 到府</b>（北投住家（地址略））→ 桃機 T2。<br>
+          2 人 2 行李 · <b>NT$1,000</b> · 司機資料出發前一天提供。<br>
+          車程約 45–55 分（清晨車少），約 06:20 抵達機場，距起飛 3 小時充裕。<br>
+          <b>05:25 前在樓下等車</b>，前一晚行李打包好。</p>
+          <div class="meta"><span>🚕 機場接送／計程車 北投→桃機T2 約 45–55 分</span><span>💰 <b>已訂：去程 NT$1,000</b>（回程 NT$1,100 也訂好了）</span></div>
+          <div class="maplinks"><a class="maplink" href="https://www.google.com/maps/search/?api=1&query=Beitou+District+Taipei" target="_blank">📍 出發地（北投住家）</a><a class="maplink" href="https://www.google.com/maps/search/?api=1&query=Taoyuan+International+Airport+Terminal+2" target="_blank">📍 桃園機場 第二航廈</a></div></div></div>
+        <div class="slot"><div class="time">06:20</div><div class="ct">
+          <h4>桃園機場 T2 報到 · EVA Air</h4>
+          <p>長榮航空在<b>第二航廈</b>。<br>
+          劃位、托運、過海關安檢。<br>
+          先用 App 確認 e-Visa PDF 帶齊。</p>
+          <div class="meta"><span>🏬 第二航廈（國際線）</span><span>💰 — </span></div>
+          <div class="maplinks"><a class="maplink" href="https://www.google.com/maps/search/?api=1&query=Taoyuan+International+Airport+Terminal+2" target="_blank">📍 桃園機場 T2</a></div></div></div>
+        <div class="slot"><div class="time">09:20</div><div class="ct">
+          <h4>EVA BR391 起飛 → 胡志明</h4>
+          <p>TPE 09:20 → SGN 11:40，飛行約 3 小時 20 分。✈️</p></div></div>
+        <div class="slot"><div class="time">11:40</div><div class="ct">
+          <h4>新山一機場入境 → 飯店</h4>
+          <p>領 e-Visa 過關。<br>
+          <b>機場匯率差，不用在這換</b>——Grab 事先綁好信用卡，車資直接刷；換匯到市區 Hà Tâm 再換（下一站順路）。<br>
+          真的需要現金再換小額應急（等值 NT$500–1,000）。<br>
+          到飯店先寄放行李（14:00 後才能入住）。<br>
+          🗣 <b>「We'd like to leave our luggage here before check-in. We'll be back around 8 PM.」</b><br>
+          （我們想先寄放行李，晚上八點左右回來拿）</p>
+          <div class="meta"><span>🚕 Grab 約 15–20 分｜🚶 不適合步行（約 7 公里）</span><span>💰 <b>約 15–20 萬 VND</b>（NT$190–250）</span></div>
+          <div class="maplinks"><a class="maplink" href="https://www.google.com/maps/search/?api=1&query=Silverland+May+Hotel+Ho+Chi+Minh" target="_blank">📍 Silverland Mây 飯店</a><a class="maplink" href="https://www.google.com/maps/search/?api=1&query=Tan+Son+Nhat+International+Airport" target="_blank">📍 新山一機場</a></div></div></div>
+        <div class="slot"><div class="time">13:15</div><div class="ct">
+          <h4>Hà Tâm 換匯 + Pho 2000 午餐 <span class="pill must">先換錢</span></h4>
+          <p>行李寄飯店櫃台後，直奔濱城市場口——換匯＋午餐同一個路口搞定：<br>
+          ① <b>Hà Tâm 換匯所</b>（Nguyễn An Ninh 街、濱城市場正對面金店）：市區匯率最好之一，<b>台幣/美金都收</b>，比機場好 2–4%。<br>
+          ② 隔壁 <b>Pho 2000</b>（柯林頓吃過的河粉）快速吃第一餐。<br>
+          點鈔當場核對、大面額 0 很多別看錯。<br>
+          吃飽換好錢，開始輕鬆逛老城！</p>
+          <div class="meta"><span>🚶 飯店→濱城市場 約 12 分｜🚕 Grab 約 5 分（2–3 萬 VND）</span><span>💰 河粉 約 7–9 萬 VND/人 · <b>兩人共換 NT$12,000（約 1,000 萬盾）</b>——含 Rose Spa 現金 126 萬＋調香/Miu Miu 備用＋吃喝購物（明細見「我的預訂」頁下方）</span></div>
+          <div class="maplinks"><a class="maplink" href="https://www.google.com/maps/search/?api=1&query=Ha+Tam+exchange+2+Nguyen+An+Ninh+Ho+Chi+Minh" target="_blank">📍 Hà Tâm 換匯所</a><a class="maplink" href="https://www.google.com/maps/search/?api=1&query=Pho+2000+Ben+Thanh+Ho+Chi+Minh" target="_blank">📍 Pho 2000</a></div></div></div>
+        <div class="slot"><div class="time">15:00</div><div class="ct">
+          <h4>第一郡地標散步 <span class="pill must">輕鬆</span></h4>
+          <p>紅教堂（聖母大教堂）→ 中央郵政局 → 書街 → 阮惠步行街，慢慢走慢慢拍。<br>
+          終點就是 <b>The Café Apartment 咖啡公寓</b>——<b>15:50 前抵達</b>，上 2 樓調香去！（路線約 1.5 公里，邊走邊拍剛剛好）<br>
+          ☔ 遇午後雨就跳過散步，Grab 直達咖啡公寓喝咖啡等開課。</p>
+          <div class="meta"><span>🚶 景點步行串連 全程約 1.5 公里（慢走 40 分）｜🚕 不需叫車</span><span>💰 景點免費 · 咖啡 約 6–9 萬 VND（NT$75–110）</span></div>
+          <div class="maplinks"><a class="maplink" href="https://www.google.com/maps/search/?api=1&query=Notre+Dame+Cathedral+Basilica+of+Saigon" target="_blank">📍 紅教堂</a><a class="maplink" href="https://www.google.com/maps/search/?api=1&query=Saigon+Central+Post+Office" target="_blank">📍 中央郵政局</a><a class="maplink" href="https://www.google.com/maps/search/?api=1&query=Nguyen+Hue+Walking+Street+Ho+Chi+Minh" target="_blank">📍 阮惠步行街</a><a class="maplink" href="https://www.google.com/maps/search/?api=1&query=The+Cafe+Apartment+42+Nguyen+Hue" target="_blank">📍 咖啡公寓</a></div></div></div>
+        <div class="slot"><div class="time">16:00</div><div class="ct">
+          <h4>NOTE 香水調香工作坊 <span class="pill must">★ 手作</span><span class="pill book">✅ 已預約</span></h4>
+          <p><b>NOTE – The Scent Lab</b>，就在<b>咖啡公寓 2 樓</b>（42 Nguyễn Huệ）。<br>
+          <b>已預約 16:00–18:00</b>（10ml 方案 × 2 人）。<br>
+          120 分鐘：香氣個性測驗 → 30+ 種 IFRA 認證香精挑選 → 調出專屬自己的香水。<br>
+          成品裝瓶＋禮盒帶回家，是獨一無二的伴手禮。<br>
+          兩人一起調、互聞互選，超好玩。<br>
+          課程以<b>英文</b>進行（聞香＋動手為主，語言門檻低）；可先用 WhatsApp <b>+84 896490038</b> 詢問中文教材。</p>
+          <div class="meta"><span>🚶 就在散步終點咖啡公寓 2 樓｜🚕 不需叫車</span><span>💰 <b>已預約 · 現場付款</b>：2 人共 US$51.84 含稅（≈135 萬 VND / NT$1,660）· 建議刷卡、備現金以防萬一</span></div>
+          <div class="maplinks"><a class="maplink" href="https://www.google.com/maps/search/?api=1&query=NOTE+The+Scent+Lab+42+Nguyen+Hue+Ho+Chi+Minh" target="_blank">📍 NOTE 調香室（咖啡公寓 2F）</a></div></div></div>
+        <div class="slot"><div class="time">18:15</div><div class="ct">
+          <h4>Pizza 4P's 創始店晚餐 <span class="pill eat">必吃</span><span class="pill book">需訂位</span></h4>
+          <p>西貢起家的傳奇披薩 <b>Pizza 4P's</b>——<b>創始店就在日本街巷內</b>（8/15 Lê Thánh Tôn）。<br>
+          必點：<b>四起司披薩（4 Cheese）淋蜂蜜</b>——可選半半一次吃兩種口味，Burrata 系列也超有名。<br>
+          官網 pizza4ps.com 線上訂位 <b>9/24（四）18:10、2 位</b>（熱門店，先訂才不用排）。<br>
+          19:20 吃完，走 5–7 分鐘到 Miu Miu 按摩剛剛好。</p>
+          <div class="meta"><span>🚶 咖啡公寓→4P's 約 8 分・4P's→Miu Miu 約 6 分</span><span>💰 披薩＋飲料 約 25–40 萬 VND（NT$310–500）/人 · 可刷卡</span></div>
+          <div class="maplinks"><a class="maplink" href="https://www.google.com/maps/search/?api=1&query=Pizza+4Ps+Le+Thanh+Ton+8/15+Ho+Chi+Minh" target="_blank">📍 Pizza 4P's 創始店</a></div></div></div>
+        <div class="slot"><div class="time">19:30</div><div class="ct">
+          <h4>Miu Miu Spa 越式全身按摩 90 分 <span class="pill must">★ 必排</span><span class="pill book">✅ 已確認</span></h4>
+          <p>清晨五點起床＋飛行一整天，用按摩收尾睡到不省人事😴<br>
+          <b>✅ 已確認：19:30、2 位、Body 90</b>——1 號店（04 Chu Mạnh Trinh ☎ 028 6659 3609），離飯店走路 5 分鐘。<br>
+          ⏰ <b>19:25 前到店</b>（店家建議提早 5 分）；遲到超過 10 分鐘沒通知會被取消。<br>
+          60 分以上課程<b>免費送桑拿＋蒸氣浴</b>（想蒸再蒸，會晚點回飯店）。<br>
+          21:00 按完、走 5 分鐘回飯店，早早入睡。</p>
+          <div class="meta"><span>🚶 餐廳→Spa 步行 5–10 分｜🚕 Grab 約 4 分</span><span>💰 <b>70 萬 VND/人 一口價</b>（含 16 萬服務費）· 兩人 140 萬 · <b>建議付現</b>（刷卡最多 75%、服務費須現金；全刷卡 +5%）</span></div>
+          <div class="maplinks"><a class="maplink" href="https://www.google.com/maps/search/?api=1&query=Miu+Miu+Spa+1+4+Chu+Manh+Trinh+District+1+Ho+Chi+Minh" target="_blank">📍 Miu Miu 1 號店</a><a class="maplink" href="https://www.google.com/maps/search/?api=1&query=Miu+Miu+Spa+2+2B+Chu+Manh+Trinh+District+1+Ho+Chi+Minh" target="_blank">📍 Miu Miu 2 號店（備案）</a></div></div></div>
+        <div class="slot"><div class="time">21:15</div><div class="ct">
+          <h4>回飯店 Check-in・休息</h4>
+          <p>按完全身鬆軟，回飯店辦入住、直接進入夢鄉。<br>
+          （泳池 21:00 關來不及就免了——桑拿蒸氣 Day 3 下午再蒸，房內 Mini-Bar 免費。）</p>
+          <div class="meta"><span>🚶 Spa→飯店 步行 5–10 分</span><span>💰 —</span></div>
+          <div class="maplinks"><a class="maplink" href="https://www.google.com/maps/search/?api=1&query=Silverland+May+Hotel+Ho+Chi+Minh" target="_blank">📍 Silverland Mây 飯店</a></div></div></div>
+        <div class="note">🧴 <b>香水調香已預約 ✅（現場付款）</b>：9/24（四）16:00–18:00 · 咖啡公寓 2F · 2 人 US$51.84 含稅。若付現金約 <b>135 萬 VND</b>，中午換匯時多留這筆。<b>若航班延誤</b>，用 WhatsApp <b>+84 896490038</b> 聯絡店家改時間。<br>🌸 第一天：換匯、散步、調香、晚餐，19:30 用按摩收尾——洗去飛行疲勞一夜好眠。<br>💆 Miu Miu ✅ 已確認 19:30（<b>19:25 前到店</b>，遲到 10 分會被取消）· 兩人 140 萬<b>建議付現</b>。<br>🏊 按摩結束 21:15 泳池已關（21:00）——想玩水改 Day 2/3 早上 7 點後；桑拿蒸氣 Day 3 下午免費蒸。</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===================== Day 2 ===================== -->
+  <div class="page" id="day2">
+    <div class="day">
+      <div class="day-head">
+        <div class="day-num"><small>DAY</small><b>2</b></div>
+        <div class="day-title"><h3>草藥洗頭 + 粉紅教堂 + AO Show + 法式</h3>
+          <div class="date">9/25（五）· 寵愛自己的一天 · 全程市中心</div></div>
+      </div>
+      <div class="day-body">
+        <p style="font-size:12px;color:#a89a8c;margin:12px 2px 0">👆 點各時段<b>標題</b>可展開交通、價錢細節；📍 一點直接導航</p>
+        <div class="slot"><div class="time">08:30</div><div class="ct">
+          <h4>飯店早餐（吃飽出發）<span class="pill eat">早餐</span></h4>
+          <p>吃<b>飯店免費早餐</b>，08:50 出發去洗頭。</p>
+          <div class="meta"><span>🏨 飯店內</span><span>💰 含在房價</span></div></div></div>
+        <div class="slot"><div class="time">09:00</div><div class="ct">
+          <h4>Rose Spa 草藥洗頭＋肩頸按摩 90 分 <span class="pill must">放鬆</span><span class="pill book">✅ 已預約</span></h4>
+          <p><b>✅ 已預約：9/25（五）09:00、2 位、套餐 4</b>。<br>
+          地址（店家確認）：<b>36 Trần Quang Khải, Tân Định, Q.1</b>——就在粉紅教堂同一區！<br>
+          套餐 4（90 分）：草本足浴＋<b>養生理療洗髮 60 分</b>＋肩頸舒緩按摩 30 分。<br>
+          ⚠️ <b>訂位只保留 15 分鐘</b>——08:50 前出門，會遲到先傳訊息說。<br>
+          💳 可刷卡但<b>加 3% 手續費</b>→ <b>建議付現 125.8 萬盾</b>（換匯時預留）。<br>
+          10:30 結束——<b>離粉紅教堂只有 5 分鐘車程</b>，頂著蓬鬆秀髮去拍照剛剛好😄</p>
+          <div class="meta"><span>🚕 飯店→Rose Spa（Trần Quang Khải）Grab 約 8 分（3–4 萬 VND）｜🚶 約 25 分（會流汗，建議搭車）</span><span>💰 <b>套餐 4：62.9 萬 VND/人</b>（NT$780）· 兩人約 125.8 萬盾</span></div>
+          <div class="maplinks"><a class="maplink" href="https://www.google.com/maps/search/?api=1&query=Rose+Spa+36+Tran+Quang+Khai+Tan+Dinh+District+1+Ho+Chi+Minh" target="_blank">📍 Rose Spa（36 Trần Quang Khải）</a></div></div></div>
+        <div class="slot"><div class="time">10:45</div><div class="ct">
+          <h4>粉紅教堂打卡 <span class="pill must">網美必拍</span></h4>
+          <p>網友狂推的<b>粉紅色教堂 Tân Định</b>。<br>
+          糖果色外觀超好拍，昨天攝影師沒拍到的這裡自拍補齊。<br>
+          也是天主教堂，可入內參觀（穿著得體）。</p>
+          <div class="meta"><span>🚶 Rose Spa→粉紅教堂 步行約 10 分（同區！）｜🚕 Grab 約 3 分</span><span>💰 免費 · Grab 約 4–6 萬 VND（NT$50–75）</span></div>
+          <div class="maplinks"><a class="maplink" href="https://www.google.com/maps/search/?api=1&query=Tan+Dinh+Church+Pink+Church+Ho+Chi+Minh" target="_blank">📍 粉紅教堂（Tân Định）</a></div></div></div>
+        <div class="slot"><div class="time">12:15</div><div class="ct">
+          <h4>The Refinery 鴉片工廠・商業午餐 <span class="pill eat">法式</span><span class="pill book">✅ 已訂</span></h4>
+          <p><b>✅ 已訂 12:15・2 位</b>。商業午餐才是鴉片工廠的划算吃法——套餐約 30–40 萬/人。<br>
+          🎂 生日大餐提前到中午：入座說 <b>It is her birthday!</b><br>
+          粉紅教堂跟餐廳在<b>同一條 Hai Bà Trưng 路</b>上，拍完順路直達。<br>
+          飯後散步到<b>咖啡公寓</b>拍外觀（昨天調香那棟），再去逛街。</p>
+          <div class="meta"><span>🚕 粉紅教堂→The Refinery 同路直達 Grab 約 7 分（3 萬 VND）</span><span>💰 <b>商業午餐 約 30–40 萬 VND</b>（NT$370–500）/人</span></div>
+          <div class="maplinks"><a class="maplink" href="https://www.google.com/maps/search/?api=1&query=The+Refinery+74+Hai+Ba+Trung+Ho+Chi+Minh" target="_blank">📍 The Refinery（74 Hai Bà Trưng）</a></div></div></div>
+        <div class="slot"><div class="time">14:30</div><div class="ct">
+          <h4>濱城市場 + 西貢咖啡 <span class="pill eat">逛街</span></h4>
+          <p>逛<b>濱城市場（Ben Thanh）</b>買伴手禮、看在地市集。<br>
+          再到 <b>Cộng Cà Phê</b> 喝杯招牌椰子咖啡歇腳。<br>
+          ☔ 市場本身有屋頂；出發時在下雨就 Grab 過去（5 分）。<br>
+          順便換匯（市場旁私人換匯所匯率好）。</p>
+          <div class="meta"><span>🚶 步行約 10 分｜🚕 Grab 約 5 分（2–3 萬 VND）</span><span>💰 咖啡 約 6–9 萬 VND（NT$75–110）· 伴手禮隨意</span></div>
+          <div class="maplinks"><a class="maplink" href="https://www.google.com/maps/search/?api=1&query=Ben+Thanh+Market+Ho+Chi+Minh" target="_blank">📍 濱城市場</a><a class="maplink" href="https://www.google.com/maps/search/?api=1&query=Cong+Caphe+Ho+Chi+Minh" target="_blank">📍 Cộng Cà Phê</a></div></div></div>
+        <div class="slot"><div class="time">16:30</div><div class="ct">
+          <h4>回飯店休息・梳洗換裝</h4>
+          <p>市場逛累了回飯店充電（走路 10 分）。<br>
+          換身漂亮衣服，準備看秀＋法式晚餐。<br>
+          17:30 出發走去歌劇院。</p>
+          <div class="meta"><span>🚶 濱城市場→飯店 約 10 分｜🚕 Grab 約 4 分</span><span>💰 —</span></div>
+          <div class="maplinks"><a class="maplink" href="https://www.google.com/maps/search/?api=1&query=Silverland+May+Hotel+Ho+Chi+Minh" target="_blank">📍 Silverland Mây 飯店</a></div></div></div>
+        <div class="slot"><div class="time">17:45</div><div class="ct">
+          <h4>AO Show（à ố show）<span class="pill must">看表演</span><span class="pill book">✅ 已訂</span></h4>
+          <p>百年<b>西貢歌劇院</b>內的「越南版太陽馬戲團」。<br>
+          竹編、雜技、燈光與民族舞，視覺震撼，全程無語言隔閡。<br>
+          <b>已訂 18:00 場（aah 區 × 2，訂單 FZH894454）</b>。17:45 到場出示 Klook 憑證 QR 換票，約 60 分鐘、19:00 左右散場。<br>
+          按摩店走過去 5–10 分鐘，時間剛剛好。</p>
+          <div class="meta"><span>🚶 Spa→歌劇院 步行約 5–10 分｜🚕 Grab 約 4 分</span><span>💰 <b>門票 約 70–100 萬 VND</b>（NT$850–1,200）/人</span></div>
+          <div class="maplinks"><a class="maplink" href="https://www.google.com/maps/search/?api=1&query=Saigon+Opera+House" target="_blank">📍 西貢歌劇院</a></div></div></div>
+        <div class="slot"><div class="time">19:15</div><div class="ct">
+          <h4>Secret Garden 頂樓越式晚餐 <span class="pill eat">越式</span><span class="pill book">✅ 已訂</span></h4>
+          <p><b>Secret Garden</b>（158 Pasteur 老公寓頂樓）：越南家常菜＋滿屋燈籠，氣氛好到不像話。<br>
+          中午吃了法式，晚上換道地越式——生日晚餐氣氛照樣滿分 🎂<br>
+          <b>✅ 已訂 19:15、2 位</b>。看完 AO Show 散步約 10 分鐘到。<br>
+          備案：<b>Le Jardin</b>（飯店同街區的法式家常，若想吃清淡）。</p>
+          <div class="meta"><span>🚶 歌劇院→Secret Garden 步行約 10 分｜🚕 Grab 約 4 分</span><span>💰 約 20–35 萬 VND（NT$250–430）/人</span></div>
+          <div class="maplinks"><a class="maplink" href="https://www.google.com/maps/search/?api=1&query=Secret+Garden+Restaurant+158+Pasteur+Ho+Chi+Minh" target="_blank">📍 Secret Garden</a><a class="maplink" href="https://www.google.com/maps/search/?api=1&query=Le+Jardin+31+Thai+Van+Lung+District+1+Ho+Chi+Minh" target="_blank">📍 Le Jardin（備案）</a></div></div></div>
+        <div class="slot"><div class="time">21:00</div><div class="ct">
+          <h4>Landmark 81 夜景 或 阮惠步行街散步 <span class="pill eat">自由選</span></h4>
+          <p>有體力：Grab 到越南第一高樓 <b>Landmark 81</b>，上 <b>Blank Lounge</b>（75–76 樓）喝杯飲料看西貢夜景。<br>
+          想放鬆：<b>阮惠步行街</b>晚上很熱鬧，散步吃冰、看街頭表演，走回飯店剛好。</p>
+          <div class="meta"><span>🚕 Landmark 81：Grab 約 15 分（來回 12–20 萬 VND）、太遠不步行｜🚶 阮惠步行街：步行 5–10 分</span><span>💰 Blank Lounge 低消一杯飲料 約 15–25 萬 VND（NT$190–310）/人 · 散步免費</span></div>
+          <div class="maplinks"><a class="maplink" href="https://www.google.com/maps/search/?api=1&query=Blank+Lounge+Landmark+81+Ho+Chi+Minh" target="_blank">📍 Blank Lounge（Landmark 81）</a><a class="maplink" href="https://www.google.com/maps/search/?api=1&query=Nguyen+Hue+Walking+Street+Ho+Chi+Minh" target="_blank">📍 阮惠步行街</a></div></div></div>
+        <div class="note">🎂 <b>今天是韋伶生日！</b>洗頭、打卡、法式午餐、看秀、燈籠晚餐——晚上回房還有<b>飯店免費驚喜（小蛋糕＋卡片）</b>💝<br>😎 動線：早上草藥洗頭 → 粉紅教堂 → 市場 → 梳洗 → AO Show → 法式＋夜景，一路順。<br>💆‍♀️ Rose Spa ✅ 已預約 09:00 套餐 4（<b>訂位只保留 15 分鐘</b>，08:50 前出門）。<br>🎟️ AO Show ✅ 已訂 18:00 場（Klook 憑證 QR 換票）；隨單送的 <b>Grab 8 折券</b>今天叫車去歌劇院時記得用。</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===================== Day 3 ===================== -->
+  <div class="page" id="day3">
+    <div class="day">
+      <div class="day-head">
+        <div class="day-num"><small>DAY</small><b>3</b></div>
+        <div class="day-title"><h3>富美興漫遊 + 聚會 + 夜市掃貨</h3>
+          <div class="date">9/26（六）· 白天聚會 · 晚上購物</div></div>
+      </div>
+      <div class="day-body">
+        <p style="font-size:12px;color:#a89a8c;margin:12px 2px 0">👆 點各時段<b>標題</b>可展開交通、價錢細節；📍 一點直接導航</p>
+        <div class="slot"><div class="time">08:30</div><div class="ct">
+          <h4>飯店早餐（吃飽出發）<span class="pill eat">早餐</span></h4>
+          <p>吃<b>飯店免費早餐</b>，09:15 出發去第七郡——<br>
+          今天提早過去，聚會前先逛逛<b>富美興</b>。</p>
+          <div class="meta"><span>🚶 步行約 8 分｜🚕 Grab 約 4 分（2–3 萬 VND）</span><span>💰 咖啡＋早午餐 約 10–18 萬 VND（NT$120–230）/人</span></div>
+          <div class="maplinks"><a class="maplink" href="https://www.google.com/maps/search/?api=1&query=The+Cafe+Apartment+42+Nguyen+Hue" target="_blank">📍 咖啡公寓</a></div></div></div>
+        <div class="slot"><div class="time">09:15</div><div class="ct">
+          <h4>Grab → 第七郡富美興</h4>
+          <p>提早出發，避開趕路。車程約 30–40 分，10:00 前抵達韓國街。</p>
+          <div class="meta"><span>🚕 Grab 約 30–40 分｜🚶 不可行（約 8 公里）</span><span>💰 <b>約 12–16 萬 VND</b>（NT$150–200）</span></div>
+          <div class="maplinks"><a class="maplink" href="https://www.google.com/maps/search/?api=1&query=Crescent+Lake+Phu+My+Hung+District+7+Ho+Chi+Minh" target="_blank">📍 半月湖（富美興）</a></div></div></div>
+        <div class="slot"><div class="time">10:00</div><div class="ct">
+          <h4>韓國街 K-Town 散步 + 韓超掃貨 <span class="pill eat">好逛</span></h4>
+          <p>富美興的<b>韓國街</b>（Phạm Văn Nghị / Sky Garden 一帶）——像走進小首爾。<br>
+          韓系麵包店喝杯早茶、<b>韓國超市挖零食</b>（韓國＋越南零食一次買，當伴手禮超讚）。<br>
+          街區乾淨好拍，跟第一郡是完全不同的越南。</p>
+          <div class="meta"><span>🚶 街區散步｜🚕 韓國街→半月湖 Grab 約 5 分或步行 15 分</span><span>💰 麵包＋咖啡 約 8–15 萬 VND（NT$100–190）/人 · 零食隨意</span></div>
+          <div class="maplinks"><a class="maplink" href="https://www.google.com/maps/search/?api=1&query=Pham+Van+Nghi+Korean+Town+District+7+Ho+Chi+Minh" target="_blank">📍 韓國街</a></div></div></div>
+        <div class="slot"><div class="time">11:00</div><div class="ct">
+          <h4>半月湖畔走一圈（星光橋順路看）<span class="pill must">輕鬆</span></h4>
+          <p><b>半月湖</b>湖畔走 15–20 分鐘消食，雨季早晨最涼爽。<br>
+          <b>星光橋</b>看一眼就好（LED 晚上才開，白天不用期待）。<br>
+          <b>11:40 從湖畔走去福音中心</b>，同社區步行約 10 分。<br>
+          午餐在聚會中跟孩子一起吃，不用另外安排。<br>
+          ☔ 雨天備案：整段改 <b>Crescent Mall</b>（10:00 開門）湖景咖啡＋室內逛。</p>
+          <div class="meta"><span>🚶 湖畔→福音中心 步行約 10 分</span><span>💰 免費</span></div>
+          <div class="maplinks"><a class="maplink" href="https://www.google.com/maps/search/?api=1&query=Crescent+Lake+Phu+My+Hung+District+7+Ho+Chi+Minh" target="_blank">📍 半月湖</a><a class="maplink" href="https://www.google.com/maps/search/?api=1&query=Crescent+Mall+District+7+Ho+Chi+Minh" target="_blank">📍 Crescent Mall（雨備）</a><a class="maplink" href="https://www.google.com/maps/search/?api=1&query=Garden+Plaza+1+Tan+Hung+District+7+Ho+Chi+Minh+City" target="_blank">📍 福音中心</a></div></div></div>
+        <div class="slot"><div class="time">12:00</div><div class="ct">
+          <h4>胡志明福音中心 · 國高聚會 <span class="pill must">📌 重要約定</span></h4>
+          <p><b>12:00–15:00</b>，國高聚會、和孩子們一起午餐，你跟韋伶姐分享信息。<br>📍 SI-12, Block C, Khu phố Garden Plaza 1, phường Tân Hưng, TP.HCM（第七郡 富美興 Garden Plaza 1 社區 C棟 SI-12）。</p>
+          <div class="meta"><span>⛪ 聚會地點（步行抵達）</span><span>💰 午餐與孩子同桌 · 可備小禮物/奉獻</span></div>
+          <div class="maplinks"><a class="maplink" href="https://www.google.com/maps/search/?api=1&query=Garden+Plaza+1+Tan+Hung+District+7+Ho+Chi+Minh+City" target="_blank">📍 福音中心（富美興 Garden Plaza 1）</a></div></div></div>
+        <div class="slot"><div class="time">15:30</div><div class="ct">
+          <h4>回飯店 · 免費下午茶 + 桑拿 <span class="pill eat">下午茶</span></h4>
+          <p>聚會後 Grab 回飯店，正好是下午茶時段。<br>
+          房價含<b>免費下午茶</b>（餐廳供應）＋<b>免費桑拿蒸氣室</b>，吃完蒸一下超舒服。<br>
+          準備晚上的掃貨行程，錢包和購物袋帶好😆</p>
+          <div class="meta"><span>🚕 Grab 約 30–40 分｜🚶 不可行（約 8 公里）</span><span>💰 <b>約 12–16 萬 VND</b>（NT$150–200）</span></div>
+          <div class="maplinks"><a class="maplink" href="https://www.google.com/maps/search/?api=1&query=Silverland+May+Hotel+Ho+Chi+Minh" target="_blank">📍 Silverland Mây 飯店</a></div></div></div>
+        <div class="slot"><div class="time">17:30</div><div class="ct">
+          <h4>Saigon Square 平價服飾掃貨 <span class="pill must">★ 必逛</span></h4>
+          <p>西貢版的<b>東大門／五分埔</b>！<br>
+          <b>Saigon Square</b>：室內有冷氣的平價服飾商場，衣服、褲子、鞋包、運動品牌全都有，比濱城市場便宜、觀光客也少。<br>
+          <b>記得殺價</b>：可以從對折開始喊，多逛幾攤比價。<br>
+          ☔ 出門時在下雨就 Grab（5 分），商場室內不怕雨。<br>
+          走路 3–5 分還有 <b>The New Playground</b>（Lê Lợi 地下街）：越南年輕人的設計品牌集合店，潮流服飾便宜又有特色。</p>
+          <div class="meta"><span>🚶 步行約 10–15 分｜🚕 Grab 約 5 分（2–3 萬 VND）</span><span>💰 T恤/褲子 約 10–25 萬 VND（NT$120–300）/件 · 殺價空間大</span></div>
+          <div class="maplinks"><a class="maplink" href="https://www.google.com/maps/search/?api=1&query=Saigon+Square+District+1+Ho+Chi+Minh" target="_blank">📍 Saigon Square</a><a class="maplink" href="https://www.google.com/maps/search/?api=1&query=The+New+Playground+Le+Loi+Ho+Chi+Minh" target="_blank">📍 The New Playground</a></div></div></div>
+        <div class="slot"><div class="time">19:30</div><div class="ct">
+          <h4>濱城夜市 · 邊逛邊吃晚餐 <span class="pill eat">夜市</span></h4>
+          <p>濱城市場打烊後，周邊街道變身<b>濱城夜市</b>（就在 Saigon Square 旁）。<br>
+          烤海鮮、炒河粉、春捲、甘蔗汁⋯⋯邊逛邊吃當晚餐。<br>
+          夜市攤的衣服、包包、紀念品也能挖寶，一樣要殺價。<br>
+          吃飽逛完散步回飯店，最後一晚好好收操。<br>
+          ☔ 遇雨備案：夜市攤多半有棚，真的下大雨就退回旁邊 <b>Saigon Square 室內</b>繼續逛。</p>
+          <div class="meta"><span>🚶 Saigon Square→夜市 3 分・夜市→飯店 約 15 分｜🚕 回程 Grab 約 5 分（2–3 萬 VND）</span><span>💰 小吃晚餐 約 15–30 萬 VND（NT$190–370）/人</span></div>
+          <div class="maplinks"><a class="maplink" href="https://www.google.com/maps/search/?api=1&query=Ben+Thanh+Night+Market+Ho+Chi+Minh" target="_blank">📍 濱城夜市</a></div></div></div>
+        <div class="note">🛍️ Saigon Square 大約營業到 <b>21:00</b>，先掃貨再去夜市剛好。<br>💵 這晚<b>多帶點現金</b>（夜市與小攤不能刷卡），小額鈔票分開放好殺價。<br>👗 買衣服看好尺碼：越南尺寸偏小，建議試穿或比對自己身上的衣服。</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===================== Day 4 ===================== -->
+  <div class="page" id="day4">
+    <div class="day">
+      <div class="day-head">
+        <div class="day-num"><small>DAY</small><b>4</b></div>
+        <div class="day-title"><h3>福音中心聚會 → 返程</h3>
+          <div class="date">9/27（日）· 退房後直奔機場</div></div>
+      </div>
+      <div class="day-body">
+        <p style="font-size:12px;color:#a89a8c;margin:12px 2px 0">👆 點各時段<b>標題</b>可展開交通、價錢細節；📍 一點直接導航</p>
+        <div class="slot"><div class="time">08:00</div><div class="ct">
+          <h4>早餐 + 提早退房 <span class="pill must">帶行李</span></h4>
+          <p>吃飯店早餐（06:00 就開始供應，時間很夠）。<br>
+          <b>9:00 前退房並帶上全部行李</b>。<br>
+          （聚會在第七郡、和飯店不順路，退房後不再回來）<br>
+          直接 Grab 載人帶行李前往。</p>
+          <div class="meta"><span>🚕 Grab 7 人座（放行李）約 35 分｜🚶 不可行（帶行李＋8 公里）</span><span>💰 <b>約 15–22 萬 VND</b>（NT$190–280）</span></div>
+          <div class="maplinks"><a class="maplink" href="https://www.google.com/maps/search/?api=1&query=Garden+Plaza+1+Tan+Hung+District+7+Ho+Chi+Minh+City" target="_blank">📍 福音中心（富美興 Garden Plaza 1）</a></div></div></div>
+        <div class="slot"><div class="time">10:00</div><div class="ct">
+          <h4>胡志明福音中心 · 主日聚會 <span class="pill must">📌 重要約定</span></h4>
+          <p><b>10:00–12:00</b> 主日。<br>📍 SI-12, Block C, Garden Plaza 1, phường Tân Hưng（第七郡 富美興）。行李可放 Grab／請現場幫忙暫放。</p>
+          <div class="meta"><span>⛪ 聚會地點</span><span>💰 可備奉獻 · 行李暫放</span></div>
+          <div class="maplinks"><a class="maplink" href="https://www.google.com/maps/search/?api=1&query=Garden+Plaza+1+Tan+Hung+District+7+Ho+Chi+Minh+City" target="_blank">📍 福音中心（富美興 Garden Plaza 1）</a></div></div></div>
+        <div class="slot"><div class="time">12:15</div><div class="ct">
+          <h4>前往新山一機場（先吃個午餐）</h4>
+          <p>主日結束後直接 Grab 去機場，約 35–45 分。<br>
+          在機場或路上簡單吃午餐。<br>
+          順手買伴手禮（<b>G7／中原咖啡、腰果、果乾</b>）。</p>
+          <div class="meta"><span>🚕 Grab 約 35–45 分｜🚶 不可行（約 15 公里）</span><span>💰 <b>約 20–28 萬 VND</b>（NT$250–350）</span></div>
+          <div class="maplinks"><a class="maplink" href="https://www.google.com/maps/search/?api=1&query=Tan+Son+Nhat+International+Airport" target="_blank">📍 新山一機場</a></div></div></div>
+        <div class="slot"><div class="time">13:15</div><div class="ct">
+          <h4>抵達機場 · 報到</h4>
+          <p>距起飛約 2.5 小時。<br>
+          從容辦理登機、退稅、逛免稅店。</p>
+          <div class="meta"><span>🏬 機場內</span><span>💰 機場午餐 約 15–25 萬 VND（NT$190–310）</span></div>
+          <div class="maplinks"><a class="maplink" href="https://www.google.com/maps/search/?api=1&query=Tan+Son+Nhat+International+Airport" target="_blank">📍 新山一機場</a></div></div></div>
+        <div class="slot"><div class="time">15:45</div><div class="ct">
+          <h4>EVA BR396 起飛</h4>
+          <p>SGN 15:45 → TPE 20:10，回到台灣。✈️<br>
+          <b>✅ 回程接機已訂（阿麟接送）</b>：20:10 落地 BR396，出關後司機接 → 北投住家，2 人 2 行李 NT$1,100。司機資料出發前一天提供。</p></div></div>
+        <div class="note">🧳 因為聚會在第七郡、機場在北邊、飯店在中間，動線是<b>飯店 → 第七郡聚會 → 機場</b>，所以一定要<b>退房時就帶齊行李</b>，才不用折返。</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===================== 行政區地圖 map ===================== -->
+  <div class="page" id="map">
+    <section>
+      <h2 class="sec"><span class="bar"></span>胡志明市行政區地圖</h2>
+      <p class="sec-desc">一眼看懂你們四天在哪些郡活動、每個郡的特色。點下方色塊可跳到當天行程。</p>
+      <div class="maplegend">
+        <span class="lg" data-page="day1"><span class="dot" style="background:#d4663f"></span>Day 1 · 9/24 抵達＋香水調香</span>
+        <span class="lg" data-page="day2"><span class="dot" style="background:#e0559a"></span>Day 2 · 9/25 洗頭＋AO Show＋法式</span>
+        <span class="lg" data-page="day3"><span class="dot" style="background:#3f7d5e"></span>Day 3 · 9/26 聚會＋夜市掃貨</span>
+        <span class="lg" data-page="day4"><span class="dot" style="background:#2b6cb0"></span>Day 4 · 9/27 主日＋返程</span>
+        <span class="lg"><span class="dot" style="background:#e8ddcf"></span>本次未安排</span>
+      </div>
+      <div class="mapwrap">
+        <svg viewBox="0 0 700 1155" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="胡志明市行政區地圖">
+          <defs><style>
+            .dn{font-weight:800;fill:#fff;paint-order:stroke;stroke:rgba(0,0,0,.25);stroke-width:2px}
+            .dz{font-weight:800;fill:#2c2420;paint-order:stroke;stroke:#fff;stroke-width:3px}
+            .dd{font-size:10px;font-weight:800;fill:#fff}
+          </style></defs>
+          <!-- 行政區（形狀近似實際地界） -->
+          <polygon points="120,40 300,25 430,45 420,95 340,120 230,130 150,110" fill="#c98d7a" stroke="#fff" stroke-width="2"/>
+          <polygon points="230,130 340,120 420,95 430,140 370,165 280,175 235,160" fill="#7fb8ad" stroke="#fff" stroke-width="2"/>
+          <polygon points="430,45 560,35 590,90 560,140 500,150 450,150 420,95" fill="#90a4b8" stroke="#fff" stroke-width="2"/>
+          <polygon points="590,90 665,110 680,240 640,330 560,340 520,300 540,220 560,140" fill="#d9a0b8" stroke="#fff" stroke-width="2"/>
+          <polygon points="450,150 500,150 560,140 540,220 520,300 470,330 430,300 440,230" fill="#b7c86a" stroke="#fff" stroke-width="2"/>
+          <polygon points="330,168 372,162 428,142 448,152 440,225 400,255 345,250 325,210" fill="#e8a04b" stroke="#fff" stroke-width="2"/>
+          <polygon points="150,110 230,130 235,160 280,175 275,240 215,265 160,240 140,170" fill="#8fbf8f" stroke="#fff" stroke-width="2"/>
+          <polygon points="278,180 330,172 338,232 282,242" fill="#b89bd4" stroke="#fff" stroke-width="2"/>
+          <polygon points="100,230 160,240 155,305 100,310" fill="#cfc8bd" stroke="#fff" stroke-width="2"/>
+          <polygon points="40,250 100,230 100,310 155,305 150,370 60,400" fill="#a8b0bd" stroke="#fff" stroke-width="2"/>
+          <polygon points="282,242 338,232 345,250 342,278 320,286 270,282 275,240" fill="#e8b0a0" stroke="#fff" stroke-width="2"/>
+          <polygon points="215,265 270,282 268,322 212,325" fill="#7aa8d4" stroke="#fff" stroke-width="2"/>
+          <polygon points="270,282 320,286 325,320 268,322" fill="#e0a06b" stroke="#fff" stroke-width="2"/>
+          <polygon points="342,278 400,255 440,225 448,262 448,320 420,352 372,340 356,300 342,278" fill="#e26a4f" stroke="#fff" stroke-width="3"/>
+          <polygon points="420,352 448,320 470,340 448,392 418,380" fill="#e8a0c0" stroke="#fff" stroke-width="2"/>
+          <polygon points="268,322 325,320 356,300 372,340 350,360 270,358" fill="#b0b06a" stroke="#fff" stroke-width="2"/>
+          <polygon points="212,325 268,322 270,358 255,392 190,385 195,340" fill="#e09a5a" stroke="#fff" stroke-width="2"/>
+          <polygon points="190,385 255,392 350,360 372,340 418,380 400,415 300,440 200,430" fill="#a8cf9a" stroke="#fff" stroke-width="2"/>
+          <polygon points="400,415 448,392 500,400 530,460 470,500 410,470" fill="#b07ac8" stroke="#fff" stroke-width="2"/>
+          <!-- 西貢河 -->
+          <path d="M470,18 C470,60 440,80 455,110 C475,140 500,120 495,160 C488,200 452,192 447,235 C443,270 468,265 464,305 C459,345 442,350 452,390 C464,430 520,432 540,470 C552,492 556,512 558,535" fill="none" stroke="#6fb3d9" stroke-width="13" stroke-linecap="round" opacity=".9"/>
+          <text x="595" y="420" font-size="11" fill="#4d8cb3" transform="rotate(55 595 420)">Sông Sài Gòn</text>
+
+          <!-- 區名 -->
+          <text x="255" y="85" font-size="20" class="dn">12</text><text x="280" y="86" font-size="12" class="dz">第十二郡</text>
+          <text x="290" y="152" font-size="12" class="dz">舊邑郡</text>
+          <text x="480" y="100" font-size="12" class="dz">守德郡</text>
+          <text x="612" y="200" font-size="20" class="dn">9</text><text x="600" y="222" font-size="12" class="dz">第九郡</text>
+          <text x="472" y="230" font-size="16" class="dn">2</text><text x="452" y="250" font-size="12" class="dz">草田・第二郡</text>
+          <text x="360" y="196" font-size="12" class="dz">平盛郡</text>
+          <text x="170" y="200" font-size="12" class="dz">新平郡</text>
+          <text x="284" y="212" font-size="11" class="dz">富潤郡</text>
+          <text x="108" y="278" font-size="11" class="dz">新富郡</text>
+          <text x="62" y="330" font-size="11" class="dz">平新郡</text>
+          <text x="292" y="266" font-size="13" class="dn">10</text>
+          <text x="228" y="306" font-size="13" class="dn">11</text>
+          <text x="322" y="264" font-size="13" class="dn">3</text>
+          <text x="390" y="300" font-size="17" class="dn">1</text><text x="380" y="318" font-size="12" class="dz">第一郡</text>
+          <text x="432" y="366" font-size="13" class="dn">4</text>
+          <text x="308" y="342" font-size="13" class="dn">5</text>
+          <text x="222" y="362" font-size="13" class="dn">6</text>
+          <text x="282" y="416" font-size="13" class="dn">8</text>
+          <text x="452" y="452" font-size="17" class="dn">7</text><text x="426" y="470" font-size="12" class="dz">第七郡・富美興</text>
+          <!-- 機場 -->
+          <text x="196" y="182" font-size="15">⭐</text><text x="214" y="184" font-size="10.5" class="dz">新山一機場</text>
+          <!-- 行程日圓點 -->
+          <g>
+            <circle cx="168" cy="216" r="8" fill="#d4663f"/><text x="168" y="219.5" text-anchor="middle" class="dd">1</text>
+            <circle cx="188" cy="216" r="8" fill="#2b6cb0"/><text x="188" y="219.5" text-anchor="middle" class="dd">4</text>
+            <circle cx="352" cy="180" r="8" fill="#e0559a"/><text x="352" y="183.5" text-anchor="middle" class="dd">2</text>
+            <circle cx="330" cy="248" r="8" fill="#e0559a"/><text x="330" y="251.5" text-anchor="middle" class="dd">2</text>
+            <circle cx="380" cy="332" r="8" fill="#d4663f"/><text x="380" y="335.5" text-anchor="middle" class="dd">1</text>
+            <circle cx="398" cy="332" r="8" fill="#e0559a"/><text x="398" y="335.5" text-anchor="middle" class="dd">2</text>
+            <circle cx="416" cy="332" r="8" fill="#3f7d5e"/><text x="416" y="335.5" text-anchor="middle" class="dd">3</text>
+            <circle cx="438" cy="486" r="8" fill="#3f7d5e"/><text x="438" y="489.5" text-anchor="middle" class="dd">3</text>
+            <circle cx="458" cy="486" r="8" fill="#2b6cb0"/><text x="458" y="489.5" text-anchor="middle" class="dd">4</text>
+          </g>
+          <!-- 遠郊指示 -->
+          <text x="30" y="34" font-size="11" fill="#8d7f70">↖ 古芝地道（車程 1.5h）</text>
+          <text x="530" y="540" font-size="11" fill="#8d7f70">↘ 芹耶紅樹林・猴子島（車程 2h）</text>
+          <!-- 指北針 -->
+          <g transform="translate(650,40)"><circle r="15" fill="#fff" stroke="#d8c9b8"/><path d="M0,-9 L4,6 L0,3 L-4,6 Z" fill="#d4663f"/><text y="28" font-size="10" fill="#a89a8c" text-anchor="middle">N</text></g>
+        
+          <!-- 🔍 第一郡放大鏡 -->
+          <circle cx="408" cy="300" r="62" fill="none" stroke="#d4663f" stroke-width="3" stroke-dasharray="8 5"/>
+          <line x1="360" y1="342" x2="30" y2="612" stroke="#d4663f" stroke-width="2" stroke-dasharray="6 5" opacity=".65"/>
+          <line x1="458" y1="340" x2="672" y2="612" stroke="#d4663f" stroke-width="2" stroke-dasharray="6 5" opacity=".65"/>
+          <clipPath id="d1clip"><rect x="15" y="612" width="670" height="500" rx="16"/></clipPath>
+          <g clip-path="url(#d1clip)"><g transform="translate(15,612) scale(0.9571)">
+
+          <defs><style>
+            .pl{font-size:11.5px;font-weight:800;fill:#7a3b30;paint-order:stroke;stroke:#fff;stroke-width:3px}
+            .ps{font-size:11.5px;font-weight:800;fill:#2c2420;paint-order:stroke;stroke:#fff;stroke-width:3px}
+            .bg{font-size:10.5px;font-weight:700;fill:#6b5320}
+            .mt{font-size:9.5px;font-weight:700;fill:#4d6fa8;paint-order:stroke;stroke:#fff;stroke-width:2.5px}
+          </style></defs>
+          <rect x="0" y="0" width="700" height="520" fill="#fdf3ea"/>
+          <!-- 街道紋理 -->
+          <g stroke="#f0ddcb" stroke-width="3">
+            <line x1="60" y1="0" x2="260" y2="520"/><line x1="180" y1="0" x2="380" y2="520"/>
+            <line x1="300" y1="0" x2="500" y2="520"/><line x1="420" y1="0" x2="580" y2="440"/>
+            <line x1="0" y1="120" x2="700" y2="60"/><line x1="0" y1="240" x2="640" y2="170"/>
+            <line x1="0" y1="360" x2="620" y2="290"/><line x1="0" y1="470" x2="540" y2="410"/>
+          </g>
+          <!-- 西貢河 -->
+          <path d="M615,0 L700,0 L700,520 L400,520 C470,485 540,450 570,380 C600,310 600,150 615,0 Z" fill="#cfe6f2"/>
+          <text x="640" y="150" font-size="12" fill="#7fa8bd" transform="rotate(78 640 150)">西貢河 Sông Sài Gòn</text>
+          <!-- 捷運 L1（虛線） -->
+          <path d="M318,352 L448,268 L560,180" fill="none" stroke="#4d6fa8" stroke-width="2.5" stroke-dasharray="7 5" opacity=".6"/>
+          <rect x="312" y="346" width="11" height="11" fill="#4d6fa8" rx="2"/><text x="330" y="344" class="mt">L1 濱城站</text>
+          <rect x="442" y="262" width="11" height="11" fill="#4d6fa8" rx="2"/><text x="458" y="262" class="mt">L1 歌劇院站</text>
+          <rect x="554" y="174" width="11" height="11" fill="#4d6fa8" rx="2"/><text x="530" y="166" class="mt">L1 巴山站</text>
+
+          <!-- 一般景點（紅點） -->
+          <g>
+            <circle cx="140" cy="118" r="5.5" fill="#e05545"/><text x="150" y="114" class="pl">戰爭遺跡博物館</text>
+            <circle cx="505" cy="88" r="5.5" fill="#e05545"/><text x="515" y="84" class="pl">歷史博物館・動物園</text>
+            <circle cx="282" cy="248" r="5.5" fill="#e05545"/><text x="292" y="244" class="pl">統一宮（獨立宮）</text>
+            <circle cx="180" cy="288" r="5.5" fill="#e05545"/><text x="98" y="272" class="pl">金龍劇院水上木偶</text>
+            <circle cx="396" cy="244" r="5.5" fill="#e05545"/><text x="352" y="232" class="pl">市政廳</text>
+            <circle cx="482" cy="192" r="5.5" fill="#e05545"/><text x="492" y="188" class="pl">日本街</text>
+            <circle cx="368" cy="356" r="5.5" fill="#e05545"/><text x="378" y="374" class="pl">高島屋</text>
+            <circle cx="452" cy="356" r="5.5" fill="#e05545"/><text x="462" y="352" class="pl">Bitexco 觀景台</text>
+            <circle cx="346" cy="416" r="5.5" fill="#e05545"/><text x="356" y="432" class="pl">美術館</text>
+            <circle cx="228" cy="424" r="5.5" fill="#e05545"/><text x="140" y="444" class="pl">范五老街酒吧街</text>
+            <circle cx="556" cy="446" r="5.5" fill="#e05545"/><text x="470" y="468" class="pl">西貢公主號遊輪</text>
+          </g>
+          <!-- 行程有排（⭐ 日期色點） -->
+          <g>
+            <circle cx="332" cy="186" r="7" fill="#d4663f" stroke="#fff" stroke-width="2"/><text x="342" y="182" class="ps">⭐ 紅教堂</text>
+            <circle cx="362" cy="208" r="7" fill="#d4663f" stroke="#fff" stroke-width="2"/><text x="372" y="212" class="ps">⭐ 中央郵局＋書街</text>
+            <circle cx="434" cy="278" r="7" fill="#e0559a" stroke="#fff" stroke-width="2"/><text x="400" y="298" class="ps">⭐ 歌劇院 AO Show</text>
+            <circle cx="490" cy="308" r="7" fill="#d4663f" stroke="#fff" stroke-width="2"/><text x="500" y="304" class="ps">⭐ 咖啡公寓・阮惠</text>
+            <circle cx="508" cy="222" r="7" fill="#e0559a" stroke="#fff" stroke-width="2"/><text x="518" y="220" class="ps">⭐ 按摩 Spa 聚落</text>
+            <circle cx="306" cy="338" r="7" fill="#3f7d5e" stroke="#fff" stroke-width="2"/><text x="196" y="326" class="ps">⭐ 濱城市場＋夜市</text>
+            <circle cx="288" cy="366" r="7" fill="#d4663f" stroke="#fff" stroke-width="2"/><text x="176" y="384" class="ps">⭐ Hà Tâm 換匯</text>
+            <circle cx="374" cy="392" r="7" fill="#3f7d5e" stroke="#fff" stroke-width="2"/><text x="384" y="404" class="ps">⭐ Saigon Square</text>
+            <circle cx="470" cy="242" r="7" fill="#e0559a" stroke="#fff" stroke-width="2"/><text x="480" y="240" class="ps">⭐ The Refinery 法式</text>
+          </g>
+
+          <!-- 角落車程標籤 -->
+          <g>
+            <rect x="14" y="12" width="176" height="46" rx="10" fill="#ffe08a" opacity=".95"/>
+            <text x="26" y="30" class="bg">↖ 粉紅教堂 · 車程 5 分（Day 2）</text>
+            <text x="26" y="47" class="bg">↖ 新山一機場 · 車程 20 分</text>
+            <rect x="510" y="12" width="176" height="46" rx="10" fill="#ffe08a" opacity=".95"/>
+            <text x="522" y="30" class="bg">↗ Landmark 81 · 車程 15 分</text>
+            <text x="522" y="47" class="bg">↗ 草田咖啡區 · 車程 15 分</text>
+            <rect x="14" y="462" width="200" height="46" rx="10" fill="#ffe08a" opacity=".95"/>
+            <text x="26" y="480" class="bg">↙ 堤岸華人區 10 分 · 湄公河 1.5h</text>
+            <text x="26" y="497" class="bg">↙ 古芝地道 · 車程 1.5h</text>
+            <rect x="470" y="486" width="216" height="28" rx="10" fill="#ffe08a" opacity=".95"/>
+            <text x="482" y="505" class="bg">↘ 第七郡富美興（聚會）· 車程 30 分</text>
+          </g>
+        
+          </g></g>
+          <rect x="15" y="612" width="670" height="500" rx="16" fill="none" stroke="#d4663f" stroke-width="3"/>
+          <rect x="262" y="596" width="176" height="32" rx="16" fill="#d4663f"/>
+          <text x="350" y="618" font-size="15" font-weight="800" fill="#fff" text-anchor="middle">🔍 第一郡放大</text>
+        </svg>
+        <div class="mapnote">行政區形狀為近似示意｜圓點數字＝行程日｜放大框：⭐＝行程有排、紅點＝順路景點、黃標籤＝往遠處車程｜導航請用各行程的 📍 按鈕</div>
+      </div>
+
+
+      <h2 class="sec" style="margin-top:26px"><span class="bar"></span>各郡 10 大特色 × 你們的行程</h2>
+      <p class="sec-desc">⭐ = 已排進行程。臨時想加碼或換行程，看你人在哪一郡、就近挑一個。</p>
+      <div class="grid">
+        <div class="info" style="border-left:4px solid #d4663f"><h3>⭐ 第一郡 Q.1 — 大本營（Day 1・2・3）</h3>
+          <ul class="clean">
+            <li>⭐ 中央郵政局＋書街（老城散步）</li>
+            <li>⭐ 紅教堂 聖母大教堂（外觀打卡）</li>
+            <li>⭐ 西貢歌劇院 AO Show</li>
+            <li>⭐ 阮惠步行街＋咖啡公寓</li>
+            <li>⭐ 濱城市場＆夜市、Saigon Square 掃貨</li>
+            <li>統一宮（獨立宮）：越戰終點歷史地標，門票約 6.5 萬盾</li>
+            <li>Bitexco 金融塔 Skydeck：49 樓 360° 觀景台</li>
+            <li>玉皇殿：百年道教古廟，香火鼎盛（Đa Kao 區）</li>
+            <li>胡志明市美術館：鵝黃法式老宅，門票便宜好拍</li>
+            <li>范五老街 Bùi Viện：背包客酒吧街，晚上超熱鬧（吵但值得見識）</li>
+          </ul></div>
+        <div class="info" style="border-left:4px solid #e0559a"><h3>💒 第三郡 Q.3 — 文青老城（Day 2 上午）</h3>
+          <ul class="clean">
+            <li>⭐ 粉紅教堂 Tân Định</li>
+            <li>新定市場：粉紅教堂正對面，布料＋在地小吃</li>
+            <li>戰爭遺跡博物館：越戰歷史，震撼推薦（門票約 4 萬盾）</li>
+            <li>龜湖 Hồ Con Rùa：傍晚在地人圍坐吃小吃</li>
+            <li>Nguyễn Thượng Hiền 零食街：烤米紙、奶茶一條街</li>
+            <li>Bàn Cờ 市場：在地早餐巡禮</li>
+            <li>法式老別墅咖啡廳群（安靜、好拍）</li>
+            <li>Golden Lotus 汗蒸幕（按摩備選）</li>
+            <li>Kỳ Đồng 救主聖母堂（紅磚教堂）</li>
+            <li>沿街平價美甲＆護膚店（比第一郡便宜）</li>
+          </ul></div>
+        <div class="info" style="border-left:4px solid #e0559a"><h3>🌃 平盛郡 — 摩天夜景（Day 2 晚・自由選）</h3>
+          <ul class="clean">
+            <li>⭐ Blank Lounge（Landmark 81 · 75–76F 夜景酒吧）</li>
+            <li>Landmark 81 SkyView 觀景台（79–81F，白天視野）</li>
+            <li>Vincom Center Landmark 81：商場＋越南最大室內溜冰場</li>
+            <li>Vinhomes Central Park：河濱大草坪野餐、傍晚散步</li>
+            <li>西貢河畔黃昏跑步／自行車道</li>
+            <li>Bà Chiểu 老市場：在地生活感滿滿</li>
+            <li>黎文悅陵（Lăng Ông）：百年古蹟廟宇</li>
+            <li>Thanh Đa 半島：河畔咖啡、在地小吃</li>
+            <li>平價在地餐館（蟹肉粗米線 bánh canh cua）</li>
+            <li>河畔景觀餐廳看 Landmark 81 亮燈</li>
+          </ul></div>
+        <div class="info" style="border-left:4px solid #3f7d5e"><h3>⛪ 第七郡 Q.7 — 富美興（Day 3・4）</h3>
+          <ul class="clean">
+            <li>⭐ 福音中心（週六國高、週日主日）</li>
+            <li>星光橋 Cầu Ánh Sao：LED 彩虹橋夜景（免費）</li>
+            <li>半月湖畔散步道（星光橋旁）</li>
+            <li>Crescent Mall 新月購物中心</li>
+            <li>SC VivoCity（親子、超市、美食街）</li>
+            <li>韓國街：韓式烤肉、韓國超市（K-Town 氛圍）</li>
+            <li>平價按摩 Spa（比第一郡便宜 2–3 成）</li>
+            <li>湖畔景觀咖啡廳</li>
+            <li>綠地公園多、街道整齊好散步</li>
+            <li>在地海鮮熱炒餐廳（家庭式、大份量）</li>
+          </ul></div>
+        <div class="info" style="border-left:4px solid #e8ddcf"><h3>🏮 第五郡 Q.5 堤岸 — 華人老城（備選）</h3>
+          <ul class="clean">
+            <li>天后宮（穗城會館）：200 年歷史、滿天香環超好拍</li>
+            <li>義安會館（關帝廟）：精緻潮州建築</li>
+            <li>溫陵會館／三山會館：福建系老廟</li>
+            <li>安東市場：服飾批發＋地下美食街</li>
+            <li>平西市場（緊鄰第六郡）：堤岸最大批發市場</li>
+            <li>中藥街 Hải Thượng Lãn Ông：滿街藥材香</li>
+            <li>燈籠＆婚慶用品街（色彩繽紛）</li>
+            <li>聖方濟各沙勿略堂（Cha Tam 教堂）</li>
+            <li>港式飲茶＆燒臘老店（華人口味）</li>
+            <li>Soái Kình Lâm 布料市場</li>
+          </ul></div>
+        <div class="info" style="border-left:4px solid #e8ddcf"><h3>☕ 草田 Thảo Điền — 河東洋派（備選）</h3>
+          <ul class="clean">
+            <li>特色咖啡聚落：花園系、工業風一條街</li>
+            <li>The Deck：西貢河畔餐廳，黃昏景超美</li>
+            <li>國際 brunch 名店（歐美系早午餐）</li>
+            <li>週末跳蚤市集／農夫市集</li>
+            <li>Vincom Mega Mall</li>
+            <li>選物店＆家飾雜貨（藤編、陶器伴手禮）</li>
+            <li>Xuân Thủy 餐酒街：各國料理</li>
+            <li>高級 Spa（環境幽靜、價格中上）</li>
+            <li>Annam Gourmet 進口超市：質感伴手禮</li>
+            <li>河岸草地野餐、小藝廊</li>
+          </ul></div>
+        <div class="info" style="border-left:4px solid #2b6cb0"><h3>✈️ 新平郡 — 門戶（Day 1・4）</h3>
+          <ul class="clean">
+            <li>⭐ 新山一國際機場（抵達／返程）</li>
+            <li>覺林寺 Giác Lâm：西貢最古老寺院（約 300 年）</li>
+            <li>看飛機咖啡廳：跑道旁看起降（機場迷必去）</li>
+            <li>Phạm Văn Hai 市場：在地小吃</li>
+            <li>K300 平價美食區：在地人的食堂聚落</li>
+            <li style="color:#a89a8c">觀光點較少，主要是進出門戶，不特別繞路</li>
+          </ul></div>
+        <div class="info" style="border-left:4px solid #e8ddcf"><h3>🍜 第四郡 Q.4 — 宵夜天堂（備選）</h3>
+          <ul class="clean">
+            <li>Vĩnh Khánh 海鮮小吃街：晚上整條街烤蝦烤蟹</li>
+            <li>吃田螺（ốc）配路邊塑膠椅：最道地的西貢夜生活</li>
+            <li>烤物＋冰啤酒路邊攤</li>
+            <li>Xóm Chiếu 市場在地小吃</li>
+            <li>河岸看第一郡天際線</li>
+            <li style="color:#a89a8c">離第一郡走路就到，適合臨時起意吃宵夜</li>
+          </ul></div>
+        <div class="info" style="border-left:4px solid #e8ddcf"><h3>🏘️ 富潤郡 — 在地生活（備選）</h3>
+          <ul class="clean">
+            <li>Phan Xích Long 美食街：火鍋、甜點、餐廳密度超高</li>
+            <li>在地咖啡老店（滴漏咖啡日常版）</li>
+            <li>平價按摩＆美甲</li>
+            <li>夜間路邊小吃</li>
+            <li style="color:#a89a8c">純在地生活區，想體驗「越南人的日常」再來</li>
+          </ul></div>
+      </div>
+    </section>
+  </div>
+
+  <!-- ===================== 訂票總表 booking ===================== -->
+  <div class="page" id="booking">
+    <section>
+      <h2 class="sec"><span class="bar"></span>要先訂 / 申請的東西</h2>
+      <p class="sec-desc">出發前一次處理完，到當地就輕鬆。</p>
+      <div class="grid">
+        <div class="info"><h3>🛂 e-Visa ✅ 兩人皆已核發</h3><p>裕翰 1086***22 · 韋伶 1086***89 · 效期 <b>9/24–9/27</b> 單次入境 · 欄位已全數核對無誤 · 剩最後一步：<b>兩份 PDF 各印紙本</b>＋存手機（入境查驗用）</p></div>
+        <div class="info"><h3>🍕 Pizza 4P's 訂位</h3><p>官網 <b>pizza4ps.com</b> 訂 <b>9/24（四）18:10、2 位、Lê Thánh Tôn 創始店</b> · 吃完走 6 分鐘到 Miu Miu 19:30 按摩</p></div>
+        <div class="info"><h3>🚖 台灣機場接送 ✅ 已預約（來回）</h3><p>阿麟機場接送 · 去程 <b>9/24 05:30 到府</b>（NT$1,000）· 回程 <b>9/27 20:10 接機</b>（NT$1,100）· 司機資料出發前一天用 LINE 提供</p></div>
+        <div class="info"><h3>📶 eSIM（已選定）</h3><p>Shopee「<b>環亞電訊 越南 eSIM 吃到飽</b>」· <b>9/21（一）出發前三天下單</b>，24H 自動發貨約 5 分鐘取件 · 記得<b>買 2 份</b>、選符合 9/24–27 的天數方案 · 收到 QR 先在台灣掃描安裝、<b>落地才開行動數據/漫遊</b></p></div>
+        <div class="info"><h3>🏨 訂房 ✅ 全部確認完成</h3><p>Silverland Mây 已回信確認：訂單成立 · <b>Double bed 已安排</b> · <b>9/24 提早到可寄放行李</b>（等房期間還可使用飯店設施）· 窗口：Nhi Tran (Reservation Officer) · 確認信截圖存手機備用</p></div>
+        <div class="info"><h3>🧴 NOTE 香水調香 ✅ 已預約</h3><p><b>9/24（四）16:00–18:00</b> · 咖啡公寓 2F（阮惠街 42 號）· 2 人共 US$51.84 含稅・<b>現場付款</b> · 有問題找店家 WhatsApp +84 896490038</p></div>
+        <div class="info"><h3>🎭 AO Show ✅ 已訂</h3><p><b>9/25（五）18:00</b> · aah 坐席區 × 2 · NT$1,772 · Klook 訂單 FZH894454 · 17:45 到劇院出示 <b>Klook App 憑證 QR</b> 換票（每人一組 QR）· 加贈 <b>Grab 8 折券</b>（SV9UNSH2，9/25 當日搭去已訂景點可用）</p></div>
+        <div class="info"><h3>💆 越式全身按摩 ✅ 已確認</h3><p>✅ <b>Miu Miu Spa 1 號店已確認</b>：9/24（四）19:30、2 位、Body 90 · <b>70 萬/人含服務費</b>（兩人 140 萬，建議付現：刷卡上限 75%、服務費 16 萬/人須現金）· <b>19:25 前到店</b>，遲到 10 分鐘會被取消 · 確認訊息截圖存好</p></div>
+        <div class="info"><h3>💆‍♀️ 越式洗頭 ✅ 已預約</h3><p>✅ 已確認：<b>Rose Spa</b>（<b>36 Trần Quang Khải, Tân Định, Q.1</b>，店家確認的地址）· <b>9/25（五）09:00、2 位、套餐 4</b>（足浴＋理療洗髮 60＋肩頸 30，62.9 萬/人）· 訂位只保留 15 分鐘，遲到先傳訊 · 刷卡+3% 手續費，<b>建議付現 125.8 萬盾</b></p></div>
+        <div class="info"><h3>🍽 生日雙餐（午法式・晚越式）🎂</h3><p>① The Refinery ✅ <b>9/25 12:15 商業午餐</b> ② Secret Garden ✅ <b>9/25 19:15 晚餐</b> · 兩餐都可說 It is her birthday 🎂</p></div>
+                <div class="info"><h3>⛪ 福音中心聚會</h3><p>週六國高 12:00–15:00、週日主日 10:00–12:00 · 富美興第七郡（已排入行程）</p></div>
+      </div>
+      <h2 class="sec" style="margin-top:26px"><span class="bar"></span>備選在地體驗（想換口味再排）</h2>
+      <p class="sec-desc">時間或體力有變動時，可以拿這些替換既有行程。</p>
+      <div class="grid">
+        <div class="info"><h3>🎭 金龍水上木偶戲</h3><p>越南傳統水上木偶表演，約 50 分鐘、場次多在 18:30。想看的話把 9/25 按摩提早到 15:30 即可。Klook / KKday 搜「胡志明 水上木偶」</p></div>
+        <div class="info"><h3>🚢 西貢河晚餐遊船</h3><p>Saigon Princess / Bến Nghé 遊船，船上晚餐配夜景與現場音樂，浪漫收尾。可替代 9/25 或 9/26 晚餐（需預約）</p></div>
+        <div class="info"><h3>🌃 Landmark 81 觀景</h3><p>越南第一高樓。Blank Lounge（75–76F）低消一杯飲料即可看夜景，已排入 9/25 卡丁車回程順路（自由選）</p></div>
+        <div class="info"><h3>👘 奧黛寫真（改列備選）</h3><p>原訂 Em Áo Dài 已客滿。仍想拍可改 Klook 搜「<b>Ao Dai Oi 奧黛攝影</b>」（2 人約 NT$1,900，租借＋帶拍）或路邊租借店純租自拍（約 35 萬 VND/人），排 Day 1 下午或 Day 2 上午都行</p></div>
+        <div class="info"><h3>🛵 Vespa 夜遊美食團</h3><p>坐偉士牌機車後座、在地嚮導帶吃 4–5 攤道地小吃，約 4 小時。體力好可替代任一晚餐行程。Klook / KKday 搜「西貢 Vespa food tour」</p></div>
+      </div>
+    </section>
+  </div>
+
+  <!-- ===================== 我的預訂 tickets ===================== -->
+  <div class="page" id="tickets">
+    <section>
+      <h2 class="sec"><span class="bar"></span>我的預訂總覽</h2>
+      <p class="sec-desc">所有訂單集中在這頁。每張卡可按「📷 加入截圖」放入憑證 QR／確認訊息——現場直接打開這頁出示。截圖存在這台裝置的瀏覽器裡。</p>
+
+      <div class="tkcard" style="--tc:#2b6cb0">
+        <h3>✈️ 機票 長榮航空 <span class="tkst ok">已開票</span></h3>
+        <p>去程 <b>BR391</b>：9/24（四）TPE 09:20 → SGN 11:40 ｜ 回程 <b>BR396</b>：9/27（日）SGN 15:45 → TPE 20:10</p>
+        <p>訂位代號：<span class="tkcode">（編輯模式補上）</span>（兩人）</p>
+        <button class="tkadd">📷 加入截圖</button>
+      </div>
+
+      <div class="tkcard" style="--tc:#2b6cb0">
+        <h3>🏨 Silverland Mây Hotel <span class="tkst ok">已確認</span></h3>
+        <p>9/24–9/27（3 晚）· Casasia Room · <b>Double bed 已安排</b> · 含早餐/下午茶/桑拿/Mini-Bar</p>
+        <p>28-30 Thi Sách St., Sài Gòn Ward · ☎ +84 28 3520 3040 · 窗口 Nhi Tran</p>
+        <p>9/24 約 13:00 先寄行李（已知會）· 最晚退房 12:00</p>
+        <p>🎂 <b>飯店免費生日驚喜已確認</b>：9/25 晚房內小蛋糕＋卡片（已回信註明生日是 25 日）</p>
+        <button class="tkadd">📷 加入截圖</button>
+      </div>
+
+      <div class="tkcard" style="--tc:#2b6cb0">
+        <h3>🛂 越南 e-Visa × 2 <span class="tkst ok">已核發</span></h3>
+        <p>裕翰：<span class="tkcode">1086***22/EV</span> 護照 3522*****</p>
+        <p>韋伶：<span class="tkcode">1086***89/EV</span> 護照 3711*****</p>
+        <p>效期 9/24–9/27 單次入境 · <b>兩人各印紙本隨身帶</b>＋手機存 PDF</p>
+        <button class="tkadd">📷 加入截圖</button>
+      </div>
+
+      <div class="tkcard" style="--tc:#d4663f">
+        <h3>🧴 NOTE 香水調香 <span class="tkst ok">已預約（現場付款）</span></h3>
+        <p><b>9/24（四）16:00–18:00</b> · 咖啡公寓 2F（42 Nguyễn Huệ）· 2 人 · 10ml 方案</p>
+        <p>現場付 <b>US$51.84 含稅</b>（≈135 萬 VND，可刷卡）· 店家 WhatsApp <span class="tkcode">+84 896490038</span></p>
+        <button class="tkadd">📷 加入截圖</button>
+      </div>
+
+      <div class="tkcard" style="--tc:#d4663f">
+        <h3>💆 Miu Miu Spa 1 號店 <span class="tkst ok">已確認</span></h3>
+        <p><b>9/24（四）19:30</b> · Body 90 × 2 · 04 Chu Mạnh Trinh（離飯店走路 5 分）· <b>19:25 前到店</b>（遲到 10 分未通知會被取消）</p>
+        <p>💰 <b>70 萬/人含服務費</b>（兩人 140 萬）· 建議付現（刷卡最多 75%、服務費 16 萬/人須現金；全刷卡 +5%）</p>
+        <p>☎ 028 6659 3609 · WhatsApp <span class="tkcode">+84 971 753 75</span></p>
+        <button class="tkadd">📷 加入截圖</button>
+      </div>
+
+      <div class="tkcard" style="--tc:#e0559a">
+        <h3>💆‍♀️ Rose Spa 套餐 4 <span class="tkst ok">已確認</span></h3>
+        <p><b>9/25（五）09:00</b> · 2 位 · 足浴＋理療洗髮 60 分＋肩頸 30 分</p>
+        <p>📍 <b>36 Trần Quang Khải, Tân Định, Q.1</b>（以店家確認為準）· 訂位保留 15 分鐘</p>
+        <p>💰 62.9 萬/人 · <b>建議付現 125.8 萬</b>（刷卡 +3%）</p>
+        <button class="tkadd">📷 加入截圖</button>
+      </div>
+
+      <div class="tkcard" style="--tc:#e0559a">
+        <h3>🎭 AO Show（西貢歌劇院） <span class="tkst ok">已購票</span></h3>
+        <p><b>9/25（五）18:00 開演</b> · aah 坐席區 × 2 · NT$1,772 · <b>17:45 到場換票</b></p>
+        <p>Klook 訂單 <span class="tkcode">FZH894454</span> 主憑證 <span class="tkcode">KLK3030900770</span></p>
+        <p>成人1 <span class="tkcode">KLK5839306418</span> 成人2 <span class="tkcode">KLK0687600502</span></p>
+        <p>⚠️ 進場掃的是 <b>Klook App 裡的 QR</b>（或憑證截圖）——把兩張 QR 截圖加到下面最保險</p>
+        <button class="tkadd">📷 加入截圖</button>
+      </div>
+
+      <div class="tkcard" style="--tc:#e0559a">
+        <h3>🚕 Grab 8 折券（Klook 加贈） <span class="tkst ok">已領取</span></h3>
+        <p>9/25 當日搭 Grab 前往已訂景點（歌劇院）可用 · 憑證號 <span class="tkcode">SV9UNSH2</span> · 訂單 <span class="tkcode">EBB828303</span></p>
+        <button class="tkadd">📷 加入截圖</button>
+      </div>
+
+      <div class="tkcard" style="--tc:#e0559a">
+        <h3>🍽 The Refinery 商業午餐 <span class="tkst ok">已訂位</span> 🎂</h3>
+        <p><b>9/25（五）12:15</b> · 2 位（Google/TableCheck，確認信在 Gmail）</p>
+        <p>74 Hai Bà Trưng（跟粉紅教堂同條路） · 入座時說 <b>It is her birthday!</b></p>
+        <button class="tkadd">📷 加入截圖</button>
+      </div>
+
+      <div class="tkcard" style="--tc:#e0559a">
+        <h3>🍽 Secret Garden 晚餐 <span class="tkst ok">已訂位</span> 🎂</h3>
+        <p><b>9/25（五）19:15</b> · 2 位 · 158 Pasteur 頂樓（AO Show 散場走 10 分）</p>
+        <p>越式家常＋燈籠氣氛 · 約 20–35 萬/人 · FB 訊息訂位 · 備案 Le Jardin</p>
+        <button class="tkadd">📷 加入截圖</button>
+      </div>
+
+      <div class="tkcard" style="--tc:#d4663f">
+        <h3>🍕 Pizza 4P's 創始店 <span class="tkst wait">待訂位</span></h3>
+        <p><b>9/24（四）18:10</b> · 2 位 · 8/15 Lê Thánh Tôn（日本街巷內）· 官網 pizza4ps.com 訂位</p>
+        <p>必點：四起司披薩淋蜂蜜（半半可加點 Burrata）· 約 25–40 萬/人 · 可刷卡</p>
+        <button class="tkadd">📷 加入截圖</button>
+      </div>
+
+      <div class="tkcard" style="--tc:#8d7f70">
+        <h3>🚖 台灣機場接送（阿麟）<span class="tkst ok">已預約・來回</span></h3>
+        <p>去程：<b>9/24（四）05:30 到府</b> · 北投住家（地址略） → 桃機 T2 · 2 人 2 行李 · <b>NT$1,000</b></p>
+        <p>回程：<b>9/27（日）20:10 落地 BR396</b> 接機 → 北投住家 · <b>NT$1,100</b></p>
+        <p>司機資料出發前一天提供（注意 LINE 訊息）· 聯絡人留的是 0930-***-353</p>
+        <button class="tkadd">📷 加入截圖</button>
+      </div>
+
+      <div class="tkcard" style="--tc:#8d7f70">
+        <h3>📶 eSIM × 2 <span class="tkst wait">9/21（一）下單</span></h3>
+        <p>Shopee「環亞電訊 越南 eSIM 吃到飽」· 買 2 份 · 選涵蓋 9/24–27 的方案</p>
+        <p>收到 QR 先在台灣安裝、落地才開數據漫遊</p>
+        <button class="tkadd">📷 加入截圖</button>
+      </div>
+
+      <p class="sec-desc" style="margin-top:6px">💡 點截圖可移除。要更新訂單狀態（例如 Miu Miu 確認了），用 ✏️ 編輯改字或告訴 Claude。</p>
+      <input type="file" id="tkfile" accept="image/*" style="display:none">
+    </section>
+  </div>
+
+  <!-- ===================== 換匯換算器 convert ===================== -->
+  <div class="page" id="convert">
+    <section>
+      <h2 class="sec"><span class="bar"></span>台幣 ⇄ 越南盾 換算器</h2>
+      <p class="sec-desc">輸入任一邊的數字，另一邊會自動換算。匯率可自己改。</p>
+      <div class="conv">
+        <div class="row">
+          <div class="fld">
+            <label>新台幣 TWD</label>
+            <div class="ipt"><span class="cur">NT$</span><input id="twd" type="number" inputmode="decimal" placeholder="0" value="1000"></div>
+          </div>
+          <div class="swap">⇄</div>
+          <div class="fld">
+            <label>越南盾 VND</label>
+            <div class="ipt"><span class="cur">₫</span><input id="vnd" type="number" inputmode="decimal" placeholder="0"></div>
+          </div>
+        </div>
+        <div class="rate">
+          匯率：1 TWD =
+          <input id="rate" type="number" inputmode="decimal" value="834"> VND
+          <span style="color:#a89a8c">（2026/6 約 834，可自行更新）</span>
+        </div>
+        <div class="chips" id="chips"></div>
+        <div class="hint">💡 小撇步：越南盾看到一長串 0 別慌，<b>去掉 3 個 0 再 × 1.2 ≈ 台幣</b>（例：100,000 ₫ → 100 × 1.2 ≈ NT$120）。</div>
+      </div>
+    </section>
+  </div>
+
+  <!-- ===================== 常用越南語 phrases ===================== -->
+  <div class="page" id="phrases">
+    <section>
+      <h2 class="sec"><span class="bar"></span>實用越南語小抄</h2>
+      <p class="sec-desc">手機螢幕給店員看也行，最重要的是「不要香菜」😆</p>
+      <table class="ph">
+        <tr><td>不要香菜（重要！）</td><td>Không ngò / Không rau mùi</td><td>空 鵝 / 空 撈妹</td></tr>
+        <tr><td>你好</td><td>Xin chào</td><td>新 早</td></tr>
+        <tr><td>謝謝</td><td>Cảm ơn</td><td>感 恩</td></tr>
+        <tr><td>多少錢？</td><td>Bao nhiêu tiền?</td><td>包 妞 顛</td></tr>
+        <tr><td>太貴了</td><td>Đắt quá</td><td>達 瓜</td></tr>
+        <tr><td>不要辣</td><td>Không cay</td><td>空 該</td></tr>
+        <tr><td>好吃</td><td>Ngon</td><td>翁</td></tr>
+      </table>
+      <h2 class="sec" style="margin-top:26px"><span class="bar"></span>飯店英文小抄</h2>
+      <p class="sec-desc">櫃台會講英文，這幾句照唸就通。</p>
+      <table class="ph">
+        <tr><td>寄放行李</td><td>We'd like to leave our luggage here before check-in.</td><td>入住前寄行李（會給行李牌）</td></tr>
+        <tr><td>回來拿行李</td><td>We're here to pick up our luggage.</td><td>出示行李牌</td></tr>
+        <tr><td>辦理入住</td><td>Check-in, please. Reservation under Yu-Han.</td><td>報訂房名字</td></tr>
+        <tr><td>問下午茶時間</td><td>What time is afternoon tea served?</td><td>Day 3 下午要用</td></tr>
+        <tr><td>問桑拿開放時間</td><td>What are the sauna opening hours?</td><td>Day 1 晚上用</td></tr>
+        <tr><td>要早一點的早餐</td><td>What time does breakfast start?</td><td>Day 4 要 9 點前退房</td></tr>
+        <tr><td>叫車協助</td><td>Could you help us book a Grab / taxi to the airport?</td><td>櫃台都很樂意幫忙</td></tr>
+      </table>
+      <h2 class="sec" style="margin-top:26px"><span class="bar"></span>調香工作坊 英文小抄</h2>
+      <p class="sec-desc">9/24 香水課用的——其實用手指＋聞香就能完成，這些是加分用。</p>
+      <table class="ph">
+        <tr><td>前調／中調／後調</td><td>Top / Middle / Base notes</td><td>一開始的味道／主體／留最久的</td></tr>
+        <tr><td>花香調</td><td>Floral</td><td>玫瑰 rose、茉莉 jasmine</td></tr>
+        <tr><td>柑橘調</td><td>Citrus</td><td>清爽、檸檬柳橙系</td></tr>
+        <tr><td>木質調</td><td>Woody</td><td>沉穩、檀香雪松系</td></tr>
+        <tr><td>甜香／清新</td><td>Sweet / Fresh</td><td>香草甜 or 乾淨皂感</td></tr>
+        <tr><td>我喜歡這個</td><td>I like this one</td><td>比讚就懂 👍</td></tr>
+        <tr><td>太濃／太淡</td><td>Too strong / Too light</td><td>捏鼻子＝太濃 😆</td></tr>
+        <tr><td>可以再聞一次嗎？</td><td>Can I smell it again?</td><td>指一下聞香條就行</td></tr>
+      </table>
+    </section>
+    <footer>
+      🌴 祝你跟韋伶在西貢玩得開心 · 慢慢走、多拍照、注意身體
+      <div class="disclaimer">行程為建議版本，表演/體驗的場次與價格請以各訂票平台與官網最新公告為準。簽證務必使用官方網站 evisa.gov.vn。</div>
+    </footer>
+  </div>
+
+  <!-- pager (prev / next) -->
+  <div class="pager">
+    <button id="prevBtn">← 上一頁</button>
+    <button id="nextBtn" class="next">下一頁 →</button>
+  </div>
+
+</div>
+
+<script>
+(function(){
+  /* ---------- restore hand edits (saved in this browser) ---------- */
+  var wrapEl = document.querySelector('.wrap');
+  var BAKED = document.documentElement.hasAttribute('data-baked');
+  var hasSaved = false;
+  try{
+    if(!BAKED){
+      var saved = localStorage.getItem('sgtrip_html');
+      if(saved){
+        var payload = null;
+        try{ payload = JSON.parse(saved); }catch(e2){ payload = null; }
+        var fileTime = Date.parse(document.lastModified) || 0;
+        if(!payload || !payload.html || fileTime > (payload.t + 5000)){
+          /* 舊格式存檔，或原始檔已被更新（Claude 改過行程）→ 以最新版為準 */
+          localStorage.removeItem('sgtrip_html');
+        }else{
+          /* 載入前檢查存檔完整性；壞掉的直接丟棄 */
+          var probe = document.createElement('div');
+          probe.innerHTML = payload.html;
+          var lowok = localStorage.getItem('sgtrip_lowok')==='1';
+          if(lowok || (probe.querySelectorAll('.page').length >= 9 && probe.querySelectorAll('.day .slot').length >= 25)){
+            wrapEl.innerHTML = payload.html; hasSaved = true;
+          }else{
+            localStorage.removeItem('sgtrip_html');
+          }
+        }
+      }
+    }
+  }catch(e){}
+
+  /* ---------- page navigation ---------- */
+  var order = ['home','prep','day1','day2','day3','day4','map','booking','tickets','convert','phrases'];
+  var titles = {
+    home:'總覽', prep:'出發前必辦',
+    day1:'Day 1 · 抵達 + 香水調香', day2:'Day 2 · 洗頭 + AO Show + 法式',
+    day3:'Day 3 · 聚會 + 夜市掃貨', day4:'Day 4 · 主日 + 返程',
+    map:'行政區地圖', booking:'要先訂的東西', tickets:'我的預訂', convert:'匯率換算器', phrases:'越南語小抄'
+  };
+  var drawer = document.getElementById('drawer');
+  var overlay = document.getElementById('overlay');
+  var burger = document.getElementById('burger');
+  var tbTitle = document.getElementById('tbTitle');
+  var links = drawer.querySelectorAll('a[data-page]');
+  var prevBtn = document.getElementById('prevBtn');
+  var nextBtn = document.getElementById('nextBtn');
+  var current = 'home';
+
+  function closeDrawer(){ drawer.classList.remove('open'); overlay.classList.remove('open'); burger.classList.remove('open'); }
+  function openDrawer(){ drawer.classList.add('open'); overlay.classList.add('open'); burger.classList.add('open'); }
+
+  function go(id){
+    if(!titles[id]) id='home';
+    document.querySelectorAll('.page').forEach(function(p){ p.classList.toggle('active', p.id===id); });
+    links.forEach(function(a){ a.classList.toggle('active', a.getAttribute('data-page')===id); });
+    tbTitle.textContent = titles[id];
+    current = id;
+    var i = order.indexOf(id);
+    prevBtn.disabled = (i<=0);
+    nextBtn.disabled = (i>=order.length-1);
+    prevBtn.textContent = i>0 ? '← '+titles[order[i-1]] : '← 上一頁';
+    nextBtn.textContent = i<order.length-1 ? titles[order[i+1]]+' →' : '下一頁 →';
+    try{ history.replaceState(null,'','#'+id); }catch(e){ try{ location.hash=id; }catch(e2){} }
+    try{ localStorage.setItem('sgtrip_page', id); }catch(e){}
+    window.scrollTo(0,0);
+  }
+
+  burger.addEventListener('click', function(){ drawer.classList.contains('open') ? closeDrawer() : openDrawer(); });
+  overlay.addEventListener('click', closeDrawer);
+  links.forEach(function(a){ a.addEventListener('click', function(){ go(a.getAttribute('data-page')); closeDrawer(); }); });
+  document.querySelectorAll('.info.go[data-page], .maplegend .lg[data-page], .ovcol[data-page]').forEach(function(c){ c.addEventListener('click', function(){ if(document.body.classList.contains('editing')) return; go(c.getAttribute('data-page')); }); });
+  prevBtn.addEventListener('click', function(){ var i=order.indexOf(current); if(i>0) go(order[i-1]); });
+  nextBtn.addEventListener('click', function(){ var i=order.indexOf(current); if(i<order.length-1) go(order[i+1]); });
+
+  /* 開頁時回到上次看的頁面（網址 # 優先，其次記憶） */
+  var startPage = (location.hash||'').replace('#','');
+  if(!titles[startPage]){ try{ startPage = localStorage.getItem('sgtrip_page') || 'home'; }catch(e){ startPage='home'; } }
+  go(titles[startPage] ? startPage : 'home');
+  window.addEventListener('hashchange', function(){
+    var h=(location.hash||'').replace('#','');
+    if(titles[h] && h!==current) go(h);
+  });
+
+  /* ---------- collapsible day slots ---------- */
+  document.querySelectorAll('.day .slot').forEach(function(s){
+    s.classList.add('collapsed');
+    var h = s.querySelector('.ct h4');
+    if(h){ h.addEventListener('click', function(){ if(document.body.classList.contains('editing')) return; s.classList.toggle('collapsed'); }); }
+  });
+
+  /* ---------- edit mode（安全版：一次只編輯一個文字格） ---------- */
+  var EDITABLE = 'h3,h4,p,li,td,th,.sec-desc,.tb-title,.g-what,.who,.hero h1,.hero .sub,.hero .eyebrow,.fact .val,.fact .lbl,.day-title .date,.oh,.od,.os span,.ot,.note,.meta span,.mapnote,.g-foot,.om,.disclaimer';
+  /* 貼上一律轉純文字 */
+  wrapEl.addEventListener('paste', function(e){
+    if(!document.body.classList.contains('editing')) return;
+    e.preventDefault();
+    var t = (e.clipboardData || window.clipboardData).getData('text/plain');
+    document.execCommand('insertText', false, t);
+  });
+  /* 點一個文字格 → 只開放那一格編輯 */
+  wrapEl.addEventListener('click', function(e){
+    if(!document.body.classList.contains('editing')) return;
+    var t = e.target.closest(EDITABLE);
+    if(t && wrapEl.contains(t)){
+      if(t.getAttribute('contenteditable')!=='true'){
+        wrapEl.querySelectorAll('[contenteditable]').forEach(function(el){ el.removeAttribute('contenteditable'); });
+        t.setAttribute('contenteditable','true');
+        t.focus();
+      }
+    }
+  });
+  wrapEl.addEventListener('focusout', function(e){
+    if(e.target && e.target.getAttribute && e.target.getAttribute('contenteditable')==='true'){
+      e.target.removeAttribute('contenteditable');
+    }
+  });
+
+  /* 編輯模式：整格刪除（✕ 按鈕，一次一格、需確認） */
+  var DELUNITS = '.day .slot, .info, .note, ul.clean li';
+  function addDelButtons(){
+    wrapEl.querySelectorAll(DELUNITS).forEach(function(el){
+      if(!el.querySelector(':scope > .delx')){
+        var b=document.createElement('button'); b.className='delx'; b.textContent='✕'; b.title='刪除這一格';
+        el.appendChild(b); el.classList.add('has-delx');
+      }
+    });
+  }
+  function removeDelButtons(){
+    wrapEl.querySelectorAll('.delx').forEach(function(b){ b.remove(); });
+    wrapEl.querySelectorAll('.has-delx').forEach(function(el){ el.classList.remove('has-delx'); });
+  }
+  wrapEl.addEventListener('click', function(e){
+    if(!document.body.classList.contains('editing')) return;
+    if(e.target.classList && e.target.classList.contains('delx')){
+      e.preventDefault(); e.stopPropagation();
+      var unit=e.target.closest(DELUNITS);
+      if(unit && confirm('刪除這一格？（儲存後生效，還原可救回）')) unit.remove();
+      return;
+    }
+    var lk=e.target.closest('.maplink, .g-nav');
+    if(lk){
+      e.preventDefault();
+      if(confirm('刪除這個 📍 按鈕？（編輯模式中點按鈕＝刪除；要開地圖請先儲存退出編輯）')) lk.remove();
+    }
+  }, true);
+
+  var cancelBtn = document.getElementById('cancelBtn');
+  cancelBtn.addEventListener('click', function(){
+    if(confirm('放棄這次的修改？（未儲存的變動會消失）')) location.reload();
+  });
+  var editBtn = document.getElementById('editBtn');
+  var resetBtn = document.getElementById('resetBtn');
+  if(hasSaved) resetBtn.style.display = 'inline-block';
+  editBtn.addEventListener('click', function(){
+    /* 儲存前防呆：內容被大量刪除時擋下 */
+    if(document.body.classList.contains('editing')){
+      var slotCount = document.querySelectorAll('.day .slot').length;
+      var pageCount = document.querySelectorAll('.page').length;
+      if(slotCount < 25 || pageCount < 9){
+        if(!confirm('⚠️ 偵測到大量內容被刪除（可能是誤刪）！\n\n建議按「取消」放棄這次修改。\n\n仍要儲存目前狀態嗎？')) return;
+        try{ localStorage.setItem('sgtrip_lowok','1'); }catch(e){}
+      }
+    }
+    var on = document.body.classList.toggle('editing');
+    editBtn.textContent = on ? '💾 儲存' : '✏️ 編輯';
+    editBtn.classList.toggle('on', on);
+    cancelBtn.style.display = on ? 'inline-block' : 'none';
+    dlBtn.style.display = on ? 'inline-block' : 'none';
+    /* 編輯時展開全部行程細節，存檔後恢復收合 */
+    document.querySelectorAll('.day .slot').forEach(function(sl){ sl.classList.toggle('collapsed', !on); });
+    if(on){ addDelButtons(); } else { removeDelButtons(); }
+    if(!on){
+      wrapEl.querySelectorAll('[contenteditable]').forEach(function(el){ el.removeAttribute('contenteditable'); });
+      var ok = false;
+      try{
+        localStorage.setItem('sgtrip_html', JSON.stringify({t: Date.now(), html: wrapEl.innerHTML}));
+        ok = localStorage.getItem('sgtrip_html') !== null;
+      }catch(e){ ok = false; }
+      if(ok && !BAKED){
+        resetBtn.style.display = 'inline-block';
+        editBtn.textContent = '✅ 已儲存';
+        setTimeout(function(){ editBtn.textContent = '✏️ 編輯'; }, 1500);
+      }else{
+        downloadEdited();
+      }
+    }
+  });
+  function downloadEdited(){
+    try{
+      var clone = document.documentElement.cloneNode(true);
+      clone.setAttribute('data-baked','1');
+      clone.querySelectorAll('[contenteditable]').forEach(function(el){ el.removeAttribute('contenteditable'); });
+      clone.querySelectorAll('.delx').forEach(function(b){ b.remove(); });
+      clone.querySelectorAll('.has-delx').forEach(function(el){ el.classList.remove('has-delx'); });
+      clone.querySelectorAll('.slot').forEach(function(sl){ sl.classList.add('collapsed'); });
+      var b = clone.querySelector('body'); if(b) b.classList.remove('editing');
+      var html = '<!DOCTYPE html>' + String.fromCharCode(10) + clone.outerHTML;
+      var a = document.createElement('a');
+      a.href = URL.createObjectURL(new Blob([html], {type:'text/html'}));
+      a.download = 'saigon-trip-my-version.html';
+      document.body.appendChild(a); a.click(); a.remove();
+      alert('已下載「saigon-trip-my-version.html」（含你的所有修改）。\n之後直接開這個檔案就是你的版本；再編輯、再下載即可。');
+    }catch(e2){ alert('下載失敗，請把想改的內容告訴 Claude 直接改進原始檔。'); }
+  }
+  var dlBtn = document.getElementById('dlBtn');
+  dlBtn.addEventListener('click', downloadEdited);
+  resetBtn.addEventListener('click', function(){
+    if(confirm('還原成原始版本？你手動改過的內容會全部清除。')){
+      try{ localStorage.removeItem('sgtrip_html'); localStorage.removeItem('sgtrip_lowok'); }catch(e){}
+      location.reload();
+    }
+  });
+
+  /* ---------- 我的預訂：加入/移除截圖 ---------- */
+  function persistSnapshot(){
+    try{ localStorage.setItem('sgtrip_html', JSON.stringify({t: Date.now(), html: wrapEl.innerHTML})); }catch(e){}
+  }
+  var tkFile = document.getElementById('tkfile');
+  var tkTarget = null;
+  wrapEl.addEventListener('click', function(e){
+    var b = e.target.closest('.tkadd');
+    if(b){ tkTarget = b.closest('.tkcard'); tkFile.value=''; tkFile.click(); return; }
+    var img = e.target.closest('.tkimg');
+    if(img && confirm('移除這張截圖？')){ img.remove(); persistSnapshot(); }
+  });
+  tkFile.addEventListener('change', function(){
+    var f = tkFile.files && tkFile.files[0];
+    if(!f || !tkTarget) return;
+    var rd = new FileReader();
+    rd.onload = function(){
+      var im = new Image();
+      im.onload = function(){
+        var maxW = 1000, sc = Math.min(1, maxW / im.width);
+        var cv = document.createElement('canvas');
+        cv.width = Math.round(im.width * sc); cv.height = Math.round(im.height * sc);
+        cv.getContext('2d').drawImage(im, 0, 0, cv.width, cv.height);
+        var url = cv.toDataURL('image/jpeg', 0.82);
+        var el = document.createElement('img');
+        el.className = 'tkimg'; el.src = url; el.title = '點一下可移除';
+        tkTarget.appendChild(el);
+        persistSnapshot();
+      };
+      im.src = rd.result;
+    };
+    rd.readAsDataURL(f);
+  });
+
+  /* ---------- currency converter ---------- */
+  var twd = document.getElementById('twd');
+  var vnd = document.getElementById('vnd');
+  var rate = document.getElementById('rate');
+  var chips = document.getElementById('chips');
+  function fmt(n){ if(!isFinite(n)) return ''; return Math.round(n).toLocaleString('en-US'); }
+  function r(){ var v = parseFloat(rate.value); return (isFinite(v) && v>0) ? v : 834; }
+  function fromTWD(){ var t = parseFloat(twd.value); vnd.value = isFinite(t) ? fmt(t*r()) : ''; }
+  function fromVND(){ var v = parseFloat((vnd.value+'').replace(/,/g,'')); twd.value = isFinite(v) ? (Math.round(v/r()*100)/100) : ''; }
+  twd.addEventListener('input', fromTWD);
+  vnd.addEventListener('input', fromVND);
+  rate.addEventListener('input', fromTWD);
+  [10000,20000,50000,100000,200000,500000].forEach(function(amt){
+    var b = document.createElement('button');
+    b.className='chip';
+    b.textContent = amt.toLocaleString('en-US')+' ₫';
+    b.onclick = function(){ vnd.value = amt; fromVND(); };
+    chips.appendChild(b);
+  });
+  fromTWD();
+})();
+</script>
+</body>
+</html>
