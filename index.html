@@ -25,13 +25,19 @@
     backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);display:flex;align-items:center;
     gap:12px;padding:0 16px;z-index:50;border-bottom:1px solid var(--line)}
   .burger{width:36px;height:36px;border:none;background:transparent;display:flex;flex-direction:column;
-    justify-content:center;gap:5px;cursor:pointer;padding:6px}
+    justify-content:center;gap:5px;cursor:pointer;padding:6px;flex-shrink:0}
   .burger span{display:block;height:3px;border-radius:2px;background:var(--accent);transition:.25s}
   .burger.open span:nth-child(1){transform:translateY(8px) rotate(45deg)}
   .burger.open span:nth-child(2){opacity:0}
   .burger.open span:nth-child(3){transform:translateY(-8px) rotate(-45deg)}
   .tb-title{font-weight:800;font-size:16px;flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
   .tb-logo{font-size:14px;font-weight:800;color:var(--accent);flex-shrink:0;white-space:nowrap}
+  @media(max-width:520px){
+    .tb-logo{display:none}
+    .topbar{gap:8px;padding:0 10px}
+    .editbtn{padding:3px 8px;font-size:11px}
+    .tb-title{font-size:14px}
+  }
 
   /* drawer */
   .drawer{position:fixed;top:0;left:0;bottom:0;width:280px;max-width:82vw;background:var(--card);
