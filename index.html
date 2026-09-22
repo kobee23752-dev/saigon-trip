@@ -215,13 +215,6 @@
   .ck input{transform:scale(1.25);accent-color:var(--accent);flex-shrink:0}
   .ck:has(input:checked){color:#a89a8c;text-decoration:line-through}
 
-  /* pager */
-  .pager{display:flex;justify-content:space-between;gap:10px;margin-top:30px}
-  .pager button{flex:1;background:var(--card);border:1px solid var(--line);border-radius:12px;
-    padding:12px;font-size:14px;font-weight:700;color:var(--accent);cursor:pointer;box-shadow:var(--shadow)}
-  .pager button:disabled{opacity:.3;cursor:default}
-  .pager button.next{background:var(--accent);color:#fff;border-color:var(--accent)}
-
   footer{text-align:center;color:var(--muted);font-size:13px;margin-top:30px}
   .disclaimer{font-size:12px;color:#a89a8c;margin-top:8px}
 
@@ -1341,12 +1334,6 @@
     </footer>
   </div>
 
-  <!-- pager (prev / next) -->
-  <div class="pager">
-    <button id="prevBtn">← 上一頁</button>
-    <button id="nextBtn" class="next">下一頁 →</button>
-  </div>
-
 </div>
 
 <script>
@@ -1396,8 +1383,6 @@
   var burger = document.getElementById('burger');
   var tbTitle = document.getElementById('tbTitle');
   var links = drawer.querySelectorAll('a[data-page]');
-  var prevBtn = document.getElementById('prevBtn');
-  var nextBtn = document.getElementById('nextBtn');
   var current = 'home';
 
   function closeDrawer(){ drawer.classList.remove('open'); overlay.classList.remove('open'); burger.classList.remove('open'); }
@@ -1409,11 +1394,6 @@
     links.forEach(function(a){ a.classList.toggle('active', a.getAttribute('data-page')===id); });
     tbTitle.textContent = titles[id];
     current = id;
-    var i = order.indexOf(id);
-    prevBtn.disabled = (i<=0);
-    nextBtn.disabled = (i>=order.length-1);
-    prevBtn.textContent = i>0 ? '← '+titles[order[i-1]] : '← 上一頁';
-    nextBtn.textContent = i<order.length-1 ? titles[order[i+1]]+' →' : '下一頁 →';
     try{ history.replaceState(null,'','#'+id); }catch(e){ try{ location.hash=id; }catch(e2){} }
     try{ localStorage.setItem('sgtrip_page', id); }catch(e){}
     window.scrollTo(0,0);
@@ -1423,8 +1403,6 @@
   overlay.addEventListener('click', closeDrawer);
   links.forEach(function(a){ a.addEventListener('click', function(){ go(a.getAttribute('data-page')); closeDrawer(); }); });
   document.querySelectorAll('.info.go[data-page], .maplegend .lg[data-page], .ovcol[data-page]').forEach(function(c){ c.addEventListener('click', function(){ if(document.body.classList.contains('editing')) return; go(c.getAttribute('data-page')); }); });
-  prevBtn.addEventListener('click', function(){ var i=order.indexOf(current); if(i>0) go(order[i-1]); });
-  nextBtn.addEventListener('click', function(){ var i=order.indexOf(current); if(i<order.length-1) go(order[i+1]); });
 
   /* 開頁時回到上次看的頁面（網址 # 優先，其次記憶） */
   var startPage = (location.hash||'').replace('#','');
