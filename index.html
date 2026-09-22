@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>胡志明市 4 天行程 ｜ 9/24–9/27</title>
-<!-- v8 -->
+<!-- v9 -->
 
 <style>
   :root{
@@ -182,6 +182,14 @@
   .tkimg{display:block;max-width:100%;border-radius:12px;border:1px solid var(--line);margin-top:10px;cursor:pointer}
 
   /* wallet */
+  .wsplit{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:16px}
+  @media(max-width:560px){.wsplit{grid-template-columns:1fr}}
+  .wpanel{background:var(--card);border-radius:16px;padding:14px 16px;box-shadow:var(--shadow);
+    border:1px solid var(--line);border-top:5px solid var(--wc,#3f7d5e)}
+  .wpname{font-size:16px;font-weight:800;margin-bottom:8px;color:var(--wc,#3f7d5e)}
+  .wcurrow{padding:7px 0;border-bottom:1px dashed var(--line)}
+  .wcurrow:last-child{border-bottom:none}
+  .wtxr .wwho{flex-shrink:0;font-size:11.5px;font-weight:800;background:#fbe9dd;color:var(--accent);border-radius:10px;padding:2px 9px}
   .wbal{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:16px}
   @media(max-width:640px){.wbal{grid-template-columns:1fr}}
   .wcard{background:var(--card);border-radius:16px;padding:14px 16px;box-shadow:var(--shadow);
@@ -1221,23 +1229,36 @@
     </section>
   </div>
 
-  <!-- ===================== 剩餘現金 wallet ===================== -->
+  <!-- ===================== 錢包記帳 wallet ===================== -->
   <div class="page" id="wallet">
     <section>
       <h2 class="sec"><span class="bar"></span>錢包記帳：還剩多少現金</h2>
-      <p class="sec-desc">已預填出發現金：<b>US$800</b>（雨函 600＋韋伶 200）＋<b>NT$8,600</b>（韋伶帶）——可自行修改。買東西記一筆自動扣、換匯登記兩邊加減；資料存在這台裝置。</p>
-      <div class="wbal">
-        <div class="wcard" style="--wc:#2b6cb0"><div class="wl">🇹🇼 台幣 TWD</div><div class="wamt" id="wbTWD">0</div><div class="wsub"></div>
-          <div class="winit">起始<input type="number" inputmode="decimal" id="wiTWD" placeholder="帶了多少"></div></div>
-        <div class="wcard" style="--wc:#3f7d5e"><div class="wl">🇺🇸 美金 USD</div><div class="wamt" id="wbUSD">0</div><div class="wsub"></div>
-          <div class="winit">起始<input type="number" inputmode="decimal" id="wiUSD" placeholder="帶了多少"></div></div>
-        <div class="wcard" style="--wc:#d4663f"><div class="wl">🇻🇳 越南盾 VND</div><div class="wamt" id="wbVND">0</div><div class="wsub" id="wsVND"></div>
-          <div class="winit">起始<input type="number" inputmode="decimal" id="wiVND" placeholder="帶了多少"></div></div>
+      <p class="sec-desc">左邊雨函、右邊韋伶——記帳時選「誰的花費」（誰付錢記誰）。起始金額可自行修改；資料存在這台裝置。</p>
+      <div class="wsplit">
+        <div class="wpanel" style="--wc:#d4663f">
+          <div class="wpname">👩 雨函</div>
+          <div class="wcurrow"><div class="wcl">🇺🇸 美金</div><div class="wamt" id="wb_yh_USD">0</div>
+            <div class="winit">起始<input type="number" inputmode="decimal" id="wi_yh_USD"></div></div>
+          <div class="wcurrow"><div class="wcl">🇹🇼 台幣</div><div class="wamt" id="wb_yh_TWD">0</div>
+            <div class="winit">起始<input type="number" inputmode="decimal" id="wi_yh_TWD"></div></div>
+          <div class="wcurrow"><div class="wcl">🇻🇳 越南盾</div><div class="wamt" id="wb_yh_VND">0</div><div class="wsub" id="ws_yh_VND"></div>
+            <div class="winit">起始<input type="number" inputmode="decimal" id="wi_yh_VND"></div></div>
+        </div>
+        <div class="wpanel" style="--wc:#e0559a">
+          <div class="wpname">👩 韋伶</div>
+          <div class="wcurrow"><div class="wcl">🇺🇸 美金</div><div class="wamt" id="wb_wl_USD">0</div>
+            <div class="winit">起始<input type="number" inputmode="decimal" id="wi_wl_USD"></div></div>
+          <div class="wcurrow"><div class="wcl">🇹🇼 台幣</div><div class="wamt" id="wb_wl_TWD">0</div>
+            <div class="winit">起始<input type="number" inputmode="decimal" id="wi_wl_TWD"></div></div>
+          <div class="wcurrow"><div class="wcl">🇻🇳 越南盾</div><div class="wamt" id="wb_wl_VND">0</div><div class="wsub" id="ws_wl_VND"></div>
+            <div class="winit">起始<input type="number" inputmode="decimal" id="wi_wl_VND"></div></div>
+        </div>
       </div>
 
       <div class="wform">
         <div class="wt">🛍️ 記一筆消費</div>
         <div class="wrow">
+          <select id="wWho"><option value="yh">雨函</option><option value="wl">韋伶</option></select>
           <input class="wdesc" id="wDesc" placeholder="買了什麼（例：Rose Spa、伴手禮）">
           <input class="wamtin" id="wAmt" type="number" inputmode="decimal" placeholder="金額">
           <select id="wCur"><option value="VND">₫ 越南盾</option><option value="TWD">NT$ 台幣</option><option value="USD">US$ 美金</option></select>
@@ -1246,10 +1267,11 @@
       </div>
 
       <div class="wform">
-        <div class="wt">💱 登記換匯（例：付台幣 → 拿越南盾）</div>
+        <div class="wt">💱 登記換匯（例：付美金 → 拿越南盾）</div>
         <div class="wrow">
+          <select id="wExWho"><option value="yh">雨函</option><option value="wl">韋伶</option></select>
           付出 <input class="wamtin" id="wExA" type="number" inputmode="decimal" placeholder="金額">
-          <select id="wExACur"><option value="TWD">NT$</option><option value="USD">US$</option><option value="VND">₫</option></select>
+          <select id="wExACur"><option value="USD">US$</option><option value="TWD">NT$</option><option value="VND">₫</option></select>
           → 拿到 <input class="wamtin" id="wExB" type="number" inputmode="decimal" placeholder="金額">
           <select id="wExBCur"><option value="VND">₫</option><option value="TWD">NT$</option><option value="USD">US$</option></select>
           <button id="wEx">登記換匯</button>
@@ -1577,30 +1599,34 @@
     rd.readAsDataURL(f);
   });
 
-  /* ---------- 剩餘現金計算機 ---------- */
-  var W_KEY='sgtrip_wallet';
-  var wState={init:{TWD:'8600',USD:'800',VND:''},tx:[]};
-  try{ var wRaw=JSON.parse(localStorage.getItem(W_KEY)); if(wRaw && wRaw.init && wRaw.tx) wState=wRaw; }catch(e){}
+  /* ---------- 錢包記帳（雙人版） ---------- */
+  var W_KEY='sgtrip_wallet2';
+  var wState={p:{yh:{TWD:'',USD:'600',VND:''}, wl:{TWD:'8600',USD:'200',VND:''}}, tx:[]};
+  try{ var wRaw=JSON.parse(localStorage.getItem(W_KEY)); if(wRaw && wRaw.p && wRaw.tx) wState=wRaw; }catch(e){}
   function wSave(){ try{ localStorage.setItem(W_KEY, JSON.stringify(wState)); }catch(e){} }
   var W_SYM={TWD:'NT$',USD:'US$',VND:'₫'};
+  var W_NAME={yh:'雨函', wl:'韋伶'};
   function wFmt(n,cur){
     var v = cur==='VND' ? Math.round(n) : Math.round(n*100)/100;
     return v.toLocaleString('en-US');
   }
   function wRate(){ var r=document.getElementById('rate'); var v=r?parseFloat(r.value):834; return (isFinite(v)&&v>0)?v:834; }
-  function wBalances(){
-    var b={TWD:parseFloat(wState.init.TWD)||0, USD:parseFloat(wState.init.USD)||0, VND:parseFloat(wState.init.VND)||0};
-    wState.tx.forEach(function(t){ t.fx.forEach(function(f){ b[f.cur]+=f.d; }); });
+  function wBalances(who){
+    var ini=wState.p[who];
+    var b={TWD:parseFloat(ini.TWD)||0, USD:parseFloat(ini.USD)||0, VND:parseFloat(ini.VND)||0};
+    wState.tx.forEach(function(t){ if(t.who===who) t.fx.forEach(function(f){ b[f.cur]+=f.d; }); });
     return b;
   }
   function wRender(){
-    var b=wBalances();
-    ['TWD','USD','VND'].forEach(function(cur){
-      var el=document.getElementById('wb'+cur);
-      if(el){ el.textContent = W_SYM[cur]+' '+wFmt(b[cur],cur); el.style.color = b[cur]<0 ? '#c0392b' : ''; }
+    ['yh','wl'].forEach(function(who){
+      var b=wBalances(who);
+      ['TWD','USD','VND'].forEach(function(cur){
+        var el=document.getElementById('wb_'+who+'_'+cur);
+        if(el){ el.textContent = W_SYM[cur]+' '+wFmt(b[cur],cur); el.style.color = b[cur]<0 ? '#c0392b' : ''; }
+      });
+      var sub=document.getElementById('ws_'+who+'_VND');
+      if(sub) sub.textContent = '≈ NT$ ' + Math.round(b.VND / wRate()).toLocaleString('en-US');
     });
-    var sub=document.getElementById('wsVND');
-    if(sub) sub.textContent = '≈ NT$ ' + Math.round(b.VND / wRate()).toLocaleString('en-US');
     var box=document.getElementById('wTx');
     if(!box) return;
     if(!wState.tx.length){ box.innerHTML='<div class="wempty">還沒有紀錄——出發後從第一筆河粉開始記 🍜</div>'; return; }
@@ -1609,22 +1635,24 @@
         var cls = f.d<0?'neg':'pos';
         return '<span class="wv '+cls+'">'+(f.d<0?'−':'＋')+W_SYM[f.cur]+' '+wFmt(Math.abs(f.d),f.cur)+'</span>';
       }).join(' ');
-      return '<div class="wtxr"><span class="wn">'+t.label+'</span>'+parts+'<button class="wdel" data-id="'+t.id+'" title="刪除">✕</button></div>';
+      return '<div class="wtxr"><span class="wwho">'+(W_NAME[t.who]||'')+'</span><span class="wn">'+t.label+'</span>'+parts+'<button class="wdel" data-id="'+t.id+'" title="刪除">✕</button></div>';
     }).join('');
   }
-  ['TWD','USD','VND'].forEach(function(cur){
-    var inp=document.getElementById('wi'+cur);
-    if(!inp) return;
-    inp.value = wState.init[cur];
-    inp.addEventListener('input', function(){ wState.init[cur]=inp.value; wSave(); wRender(); });
+  ['yh','wl'].forEach(function(who){
+    ['TWD','USD','VND'].forEach(function(cur){
+      var inp=document.getElementById('wi_'+who+'_'+cur);
+      if(!inp) return;
+      inp.value = wState.p[who][cur];
+      inp.addEventListener('input', function(){ wState.p[who][cur]=inp.value; wSave(); wRender(); });
+    });
   });
   var wAddBtn=document.getElementById('wAdd');
   if(wAddBtn) wAddBtn.addEventListener('click', function(){
-    var d=document.getElementById('wDesc'), a=document.getElementById('wAmt'), cu=document.getElementById('wCur');
+    var d=document.getElementById('wDesc'), a=document.getElementById('wAmt'), cu=document.getElementById('wCur'), who=document.getElementById('wWho').value;
     var amt=parseFloat(a.value);
     if(!isFinite(amt)||amt<=0){ alert('請輸入金額'); return; }
     var label=(d.value||'消費').trim();
-    wState.tx.push({id:Date.now(), label:'🛍️ '+label, fx:[{cur:cu.value, d:-amt}]});
+    wState.tx.push({id:Date.now(), who:who, label:'🛍️ '+label, fx:[{cur:cu.value, d:-amt}]});
     d.value=''; a.value='';
     wSave(); wRender();
   });
@@ -1633,9 +1661,10 @@
     var a=parseFloat(document.getElementById('wExA').value);
     var b2=parseFloat(document.getElementById('wExB').value);
     var ca=document.getElementById('wExACur').value, cb=document.getElementById('wExBCur').value;
+    var who=document.getElementById('wExWho').value;
     if(!isFinite(a)||a<=0||!isFinite(b2)||b2<=0){ alert('請輸入付出與拿到的金額'); return; }
     if(ca===cb){ alert('兩邊幣別要不同'); return; }
-    wState.tx.push({id:Date.now(), label:'💱 換匯', fx:[{cur:ca, d:-a},{cur:cb, d:b2}]});
+    wState.tx.push({id:Date.now(), who:who, label:'💱 換匯', fx:[{cur:ca, d:-a},{cur:cb, d:b2}]});
     document.getElementById('wExA').value=''; document.getElementById('wExB').value='';
     wSave(); wRender();
   });
