@@ -537,7 +537,7 @@
           ② 隔壁 <b>Pho 2000</b>（柯林頓吃過的河粉）快速吃第一餐。<br>
           點鈔當場核對、大面額 0 很多別看錯。<br>
           吃飽換好錢，開始輕鬆逛老城！</p>
-          <div class="meta"><span>🚶 飯店→濱城市場 約 12 分｜🚕 Grab 約 5 分（2–3 萬 VND）</span><span>💰 河粉 約 7–9 萬 VND/人 · <b>兩人共換 NT$12,000（約 1,000 萬盾）</b>——含 Rose Spa 現金 126 萬＋調香/Miu Miu 備用＋吃喝購物（明細見「我的預訂」頁下方）</span></div>
+          <div class="meta"><span>🚶 飯店→濱城市場 約 12 分｜🚕 Grab 約 5 分（2–3 萬 VND）</span><span>💰 河粉 約 7–9 萬/人 · 現金已備 <b>US$800＋NT$8,600</b> · 在 Hà Tâm 先換 <b>US$400–500</b>（≈1,000–1,250 萬盾，夠 Spa 現金＋前兩天吃喝購物），不夠再分次換 · <b>美金 100 元大鈔匯率最好</b>，換完在「💰 剩餘現金」頁登記一筆</span></div>
           <div class="maplinks"><a class="maplink" href="https://www.google.com/maps/search/?api=1&query=Ha+Tam+exchange+2+Nguyen+An+Ninh+Ho+Chi+Minh" target="_blank">📍 Hà Tâm 換匯所</a><a class="maplink" href="https://www.google.com/maps/search/?api=1&query=Pho+2000+Ben+Thanh+Ho+Chi+Minh" target="_blank">📍 Pho 2000</a></div></div></div>
         <div class="slot"><div class="time">15:00</div><div class="ct">
           <h4>第一郡地標散步 <span class="pill must">輕鬆</span></h4>
@@ -1200,7 +1200,7 @@
   <div class="page" id="wallet">
     <section>
       <h2 class="sec"><span class="bar"></span>剩餘現金計算機</h2>
-      <p class="sec-desc">先在各幣別填「目前帶多少」；買東西記一筆就自動扣、換匯登記會兩邊加減。資料存在這台裝置的瀏覽器。</p>
+      <p class="sec-desc">已預填出發現金：<b>US$800</b>（裕翰 600＋韋伶 200）＋<b>NT$8,600</b>（韋伶帶）——可自行修改。買東西記一筆自動扣、換匯登記兩邊加減；資料存在這台裝置。</p>
       <div class="wbal">
         <div class="wcard" style="--wc:#2b6cb0"><div class="wl">🇹🇼 台幣 TWD</div><div class="wamt" id="wbTWD">0</div><div class="wsub"></div>
           <div class="winit">起始<input type="number" inputmode="decimal" id="wiTWD" placeholder="帶了多少"></div></div>
@@ -1566,7 +1566,7 @@
 
   /* ---------- 剩餘現金計算機 ---------- */
   var W_KEY='sgtrip_wallet';
-  var wState={init:{TWD:'',USD:'',VND:''},tx:[]};
+  var wState={init:{TWD:'8600',USD:'800',VND:''},tx:[]};
   try{ var wRaw=JSON.parse(localStorage.getItem(W_KEY)); if(wRaw && wRaw.init && wRaw.tx) wState=wRaw; }catch(e){}
   function wSave(){ try{ localStorage.setItem(W_KEY, JSON.stringify(wState)); }catch(e){} }
   var W_SYM={TWD:'NT$',USD:'US$',VND:'₫'};
