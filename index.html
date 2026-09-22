@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>胡志明市 4 天行程 ｜ 9/24–9/27</title>
-<!-- v7 -->
+<!-- v8 -->
 
 <style>
   :root{
@@ -181,6 +181,36 @@
   .tkadd:hover{background:#dceae3}
   .tkimg{display:block;max-width:100%;border-radius:12px;border:1px solid var(--line);margin-top:10px;cursor:pointer}
 
+  /* wallet */
+  .wbal{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:16px}
+  @media(max-width:640px){.wbal{grid-template-columns:1fr}}
+  .wcard{background:var(--card);border-radius:16px;padding:14px 16px;box-shadow:var(--shadow);
+    border:1px solid var(--line);border-top:5px solid var(--wc,#3f7d5e)}
+  .wcard .wl{font-size:12.5px;color:var(--muted);font-weight:700}
+  .wcard .wamt{font-size:25px;font-weight:800;margin:2px 0;color:var(--ink);overflow-wrap:anywhere}
+  .wcard .wsub{font-size:11.5px;color:#a89a8c;min-height:16px}
+  .wcard .winit{display:flex;align-items:center;gap:6px;font-size:12px;color:var(--muted);margin-top:8px}
+  .wcard .winit input{width:100%;border:1px solid var(--line);border-radius:8px;padding:4px 8px;font-size:14px;font-weight:700;text-align:right;color:var(--ink);background:#faf3ec}
+  .wform{background:var(--card);border-radius:16px;padding:14px 16px;box-shadow:var(--shadow);border:1px solid var(--line);margin-bottom:14px}
+  .wform .wt{font-size:14px;font-weight:800;margin-bottom:8px}
+  .wrow{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+  .wrow input,.wrow select{border:1.5px solid var(--line);border-radius:10px;padding:8px 10px;font-size:14px;background:#faf3ec;color:var(--ink)}
+  .wrow input:focus,.wrow select:focus{outline:none;border-color:var(--accent)}
+  .wrow .wdesc{flex:2;min-width:130px}
+  .wrow .wamtin{flex:1;min-width:90px;text-align:right;font-weight:700}
+  .wrow button{background:var(--accent);color:#fff;border:none;border-radius:10px;padding:9px 16px;font-size:14px;font-weight:800;cursor:pointer}
+  .wrow button:hover{opacity:.9}
+  .wtx{background:var(--card);border-radius:16px;box-shadow:var(--shadow);border:1px solid var(--line);overflow:hidden}
+  .wtxr{display:flex;align-items:center;gap:10px;padding:10px 16px;border-bottom:1px dashed var(--line);font-size:13.5px}
+  .wtxr:last-child{border-bottom:none}
+  .wtxr .wn{flex:1}
+  .wtxr .wv{font-weight:800;white-space:nowrap}
+  .wtxr .wv.neg{color:#c0392b}
+  .wtxr .wv.pos{color:var(--green)}
+  .wtxr .wdel{background:none;border:none;color:#c9b8a8;font-size:15px;cursor:pointer;padding:2px 6px}
+  .wtxr .wdel:hover{color:#c0392b}
+  .wempty{padding:18px;text-align:center;color:#a89a8c;font-size:13px}
+
   /* pager */
   .pager{display:flex;justify-content:space-between;gap:10px;margin-top:30px}
   .pager button{flex:1;background:var(--card);border:1px solid var(--line);border-radius:12px;
@@ -271,6 +301,7 @@
   <a data-page="map">🗺️ 行政區地圖</a>
   <a data-page="booking">🎟️ 要先訂的東西</a>
   <a data-page="tickets">🎫 我的預訂</a>
+  <a data-page="wallet">💰 剩餘現金</a>
   <a data-page="convert">💱 匯率換算器</a>
   <a data-page="phrases">🗣️ 越南語小抄</a>
 </nav>
@@ -1165,6 +1196,47 @@
     </section>
   </div>
 
+  <!-- ===================== 剩餘現金 wallet ===================== -->
+  <div class="page" id="wallet">
+    <section>
+      <h2 class="sec"><span class="bar"></span>剩餘現金計算機</h2>
+      <p class="sec-desc">先在各幣別填「目前帶多少」；買東西記一筆就自動扣、換匯登記會兩邊加減。資料存在這台裝置的瀏覽器。</p>
+      <div class="wbal">
+        <div class="wcard" style="--wc:#2b6cb0"><div class="wl">🇹🇼 台幣 TWD</div><div class="wamt" id="wbTWD">0</div><div class="wsub"></div>
+          <div class="winit">起始<input type="number" inputmode="decimal" id="wiTWD" placeholder="帶了多少"></div></div>
+        <div class="wcard" style="--wc:#3f7d5e"><div class="wl">🇺🇸 美金 USD</div><div class="wamt" id="wbUSD">0</div><div class="wsub"></div>
+          <div class="winit">起始<input type="number" inputmode="decimal" id="wiUSD" placeholder="帶了多少"></div></div>
+        <div class="wcard" style="--wc:#d4663f"><div class="wl">🇻🇳 越南盾 VND</div><div class="wamt" id="wbVND">0</div><div class="wsub" id="wsVND"></div>
+          <div class="winit">起始<input type="number" inputmode="decimal" id="wiVND" placeholder="帶了多少"></div></div>
+      </div>
+
+      <div class="wform">
+        <div class="wt">🛍️ 記一筆消費</div>
+        <div class="wrow">
+          <input class="wdesc" id="wDesc" placeholder="買了什麼（例：Rose Spa、伴手禮）">
+          <input class="wamtin" id="wAmt" type="number" inputmode="decimal" placeholder="金額">
+          <select id="wCur"><option value="VND">₫ 越南盾</option><option value="TWD">NT$ 台幣</option><option value="USD">US$ 美金</option></select>
+          <button id="wAdd">＋記一筆</button>
+        </div>
+      </div>
+
+      <div class="wform">
+        <div class="wt">💱 登記換匯（例：付台幣 → 拿越南盾）</div>
+        <div class="wrow">
+          付出 <input class="wamtin" id="wExA" type="number" inputmode="decimal" placeholder="金額">
+          <select id="wExACur"><option value="TWD">NT$</option><option value="USD">US$</option><option value="VND">₫</option></select>
+          → 拿到 <input class="wamtin" id="wExB" type="number" inputmode="decimal" placeholder="金額">
+          <select id="wExBCur"><option value="VND">₫</option><option value="TWD">NT$</option><option value="USD">US$</option></select>
+          <button id="wEx">登記換匯</button>
+        </div>
+      </div>
+
+      <h2 class="sec" style="margin-top:20px"><span class="bar"></span>消費紀錄</h2>
+      <div class="wtx" id="wTx"><div class="wempty">還沒有紀錄——出發後從第一筆河粉開始記 🍜</div></div>
+      <p class="sec-desc" style="margin-top:10px">點 ✕ 可刪除該筆（金額會自動加回）。</p>
+    </section>
+  </div>
+
   <!-- ===================== 換匯換算器 convert ===================== -->
   <div class="page" id="convert">
     <section>
@@ -1277,12 +1349,12 @@
   }catch(e){}
 
   /* ---------- page navigation ---------- */
-  var order = ['home','prep','day1','day2','day3','day4','map','booking','tickets','convert','phrases'];
+  var order = ['home','prep','day1','day2','day3','day4','map','booking','tickets','wallet','convert','phrases'];
   var titles = {
     home:'總覽', prep:'出發前必辦',
     day1:'Day 1 · 抵達 + 香水調香', day2:'Day 2 · 洗頭 + AO Show + 法式',
     day3:'Day 3 · 聚會 + 夜市掃貨', day4:'Day 4 · 主日 + 返程',
-    map:'行政區地圖', booking:'要先訂的東西', tickets:'我的預訂', convert:'匯率換算器', phrases:'越南語小抄'
+    map:'行政區地圖', booking:'要先訂的東西', tickets:'我的預訂', wallet:'剩餘現金', convert:'匯率換算器', phrases:'越南語小抄'
   };
   var drawer = document.getElementById('drawer');
   var overlay = document.getElementById('overlay');
@@ -1491,6 +1563,79 @@
     };
     rd.readAsDataURL(f);
   });
+
+  /* ---------- 剩餘現金計算機 ---------- */
+  var W_KEY='sgtrip_wallet';
+  var wState={init:{TWD:'',USD:'',VND:''},tx:[]};
+  try{ var wRaw=JSON.parse(localStorage.getItem(W_KEY)); if(wRaw && wRaw.init && wRaw.tx) wState=wRaw; }catch(e){}
+  function wSave(){ try{ localStorage.setItem(W_KEY, JSON.stringify(wState)); }catch(e){} }
+  var W_SYM={TWD:'NT$',USD:'US$',VND:'₫'};
+  function wFmt(n,cur){
+    var v = cur==='VND' ? Math.round(n) : Math.round(n*100)/100;
+    return v.toLocaleString('en-US');
+  }
+  function wRate(){ var r=document.getElementById('rate'); var v=r?parseFloat(r.value):834; return (isFinite(v)&&v>0)?v:834; }
+  function wBalances(){
+    var b={TWD:parseFloat(wState.init.TWD)||0, USD:parseFloat(wState.init.USD)||0, VND:parseFloat(wState.init.VND)||0};
+    wState.tx.forEach(function(t){ t.fx.forEach(function(f){ b[f.cur]+=f.d; }); });
+    return b;
+  }
+  function wRender(){
+    var b=wBalances();
+    ['TWD','USD','VND'].forEach(function(cur){
+      var el=document.getElementById('wb'+cur);
+      if(el){ el.textContent = W_SYM[cur]+' '+wFmt(b[cur],cur); el.style.color = b[cur]<0 ? '#c0392b' : ''; }
+    });
+    var sub=document.getElementById('wsVND');
+    if(sub) sub.textContent = '≈ NT$ ' + Math.round(b.VND / wRate()).toLocaleString('en-US');
+    var box=document.getElementById('wTx');
+    if(!box) return;
+    if(!wState.tx.length){ box.innerHTML='<div class="wempty">還沒有紀錄——出發後從第一筆河粉開始記 🍜</div>'; return; }
+    box.innerHTML = wState.tx.slice().reverse().map(function(t){
+      var parts=t.fx.map(function(f){
+        var cls = f.d<0?'neg':'pos';
+        return '<span class="wv '+cls+'">'+(f.d<0?'−':'＋')+W_SYM[f.cur]+' '+wFmt(Math.abs(f.d),f.cur)+'</span>';
+      }).join(' ');
+      return '<div class="wtxr"><span class="wn">'+t.label+'</span>'+parts+'<button class="wdel" data-id="'+t.id+'" title="刪除">✕</button></div>';
+    }).join('');
+  }
+  ['TWD','USD','VND'].forEach(function(cur){
+    var inp=document.getElementById('wi'+cur);
+    if(!inp) return;
+    inp.value = wState.init[cur];
+    inp.addEventListener('input', function(){ wState.init[cur]=inp.value; wSave(); wRender(); });
+  });
+  var wAddBtn=document.getElementById('wAdd');
+  if(wAddBtn) wAddBtn.addEventListener('click', function(){
+    var d=document.getElementById('wDesc'), a=document.getElementById('wAmt'), cu=document.getElementById('wCur');
+    var amt=parseFloat(a.value);
+    if(!isFinite(amt)||amt<=0){ alert('請輸入金額'); return; }
+    var label=(d.value||'消費').trim();
+    wState.tx.push({id:Date.now(), label:'🛍️ '+label, fx:[{cur:cu.value, d:-amt}]});
+    d.value=''; a.value='';
+    wSave(); wRender();
+  });
+  var wExBtn=document.getElementById('wEx');
+  if(wExBtn) wExBtn.addEventListener('click', function(){
+    var a=parseFloat(document.getElementById('wExA').value);
+    var b2=parseFloat(document.getElementById('wExB').value);
+    var ca=document.getElementById('wExACur').value, cb=document.getElementById('wExBCur').value;
+    if(!isFinite(a)||a<=0||!isFinite(b2)||b2<=0){ alert('請輸入付出與拿到的金額'); return; }
+    if(ca===cb){ alert('兩邊幣別要不同'); return; }
+    wState.tx.push({id:Date.now(), label:'💱 換匯', fx:[{cur:ca, d:-a},{cur:cb, d:b2}]});
+    document.getElementById('wExA').value=''; document.getElementById('wExB').value='';
+    wSave(); wRender();
+  });
+  var wTxBox=document.getElementById('wTx');
+  if(wTxBox) wTxBox.addEventListener('click', function(e){
+    var b=e.target.closest('.wdel');
+    if(!b) return;
+    if(!confirm('刪除這筆？金額會自動加回。')) return;
+    var id=+b.getAttribute('data-id');
+    wState.tx=wState.tx.filter(function(t){ return t.id!==id; });
+    wSave(); wRender();
+  });
+  wRender();
 
   /* ---------- currency converter ---------- */
   var twd = document.getElementById('twd');
